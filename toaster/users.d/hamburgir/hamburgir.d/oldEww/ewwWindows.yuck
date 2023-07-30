@@ -1,0 +1,32 @@
+(include "ewwHelpers.yuck")
+(include "ewwWidgets.yuck")
+
+(defwindow example
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "20px"
+                               :width "90%"
+                               :height "30px"
+                               :anchor "top center")
+           :stacking "bottom"
+           :exclusive (struts :distance "50px" :side "top")
+           :windowtype "dock"
+           :wm-ignore false
+  "hello there")
+
+(defvar revealDock false)
+
+(defwindow bar
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "0%"
+                               :width "0%"
+                               :height "50%"
+                               :anchor "left center")
+           :stacking "fg"
+           :reserve (struts :distance "45px" :side "left")
+           :windowtype "dock"
+           :wm-ignore "false"
+           :hexpand "true"
+           :vexpand "true"
+  (bar))

@@ -24,6 +24,12 @@
   #   enableSSHSupport = true;
   # };
 
+  nix = {
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+
   # List services that you want to enable:
 
   # This value determines the NixOS release from which the default

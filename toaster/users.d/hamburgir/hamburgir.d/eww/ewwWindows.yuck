@@ -1,0 +1,12 @@
+(include "ewwWidgets.yuck")
+(defwindow testing
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :anchor "top center")
+  (box 
+    (wifiButton :orientation "h")
+    (toggleWifiButton :orientation "h")
+    (musicVisualizer :orientation "h")
+    ;;(timeWidget :orientation "h")
+    ))

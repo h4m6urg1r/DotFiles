@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+
+# Default behavior is to print duplicate files
+delete=0
+move=0
+
+# Check for command line options
+while getopts ":dm" opt; do
+  case $opt in
+    d)
+      # If the -d option is provided, delete duplicate files instead of printing them
+      delete=1
+      ;;
+    m)
+      # If the -m option is provided, move duplicate files to a "duplicates" folder
+      move=1
+      ;;
+    \?)
+      # If an invalid option is provided, print an error message and exit
+      echo "Invalid option: -$OPTARG" >&2
+      echo "Usage: $0 [-d] [-m] <directory>" >&2
+      exit 1
+      ;;
+  esac
+done
+
+# Set the starting index for command line argument parsing
+shift $(($OPTIND - 1))
+
+# Check that the correct number of command line arguments were provided
+if [ "$#" -ne 1 ]; then
+  echo "Usage: $0 [-d] [-m] <directory>"
+  exit 1
+fi
+
+# Get the command line argument
+directory="$1"
+
+# Create an associative array to store the md5sums and filenames of each file
+declare -A md5sums
+
+# Use the find command to locate all files in the specified directory
+find "$directory" -path "${directory}/duplicate" -prune -type f -print0 |
+while IFS= read -r -d $'\0' file; do
+  # Calculate the md5sum of the file's contents
+  md5=$(md5sum "$file" | cut -d ' ' -f 1)
+
+  # Check if the md5sum has already been seen
+  if [ -n "${md5sums[$md5]}" ]; then
+    # If the md5sum has already been seen, print or move/delete the duplicate file(s)
+    if [ "$delete" -eq 1 ]; then
+      # If the -d option is provided, delete the duplicate file
+      rm "$file"
+      echo "Deleted duplicate file: $file"
+    elif [ "$move" -eq 1 ]; then
+      # If the -m option is provided, move the duplicate file to a "duplicates" folder
+      duplicates_dir="$directory/duplicates"
+      if [ ! -d "$duplicates_dir" ]; then
+        mkdir "$duplicates_dir"
+      fi
+      
+      # Check if a file with the same name already exists in the duplicates folder
+      basename=$(basename "$file")
+      destination="$duplicates_dir/$basename"
+      count=0
+      while [ -e "$destination" ]; do
+        count=$((count+1))
+        extension="${basename##*.}"
+        filename="${basename%.*}"
+        basename="${filename}_${count}.${extension}"
+        destination="$duplicates_dir/$basename"
+      done
+      
+      mv "$file" "$destination"
+      echo "$file -> $destination" >> ${destination}/logzzz
+      echo "Moved duplicate file: $file -> $destination"
+    else
+      # If neither the -d nor -m option is provided, print a message indicating a duplicate file was found
+      echo "Duplicate file found:"
+      echo "  ${md5sums[$md5]}"
+      echo "  $file"
+    fi
+  else
+    # If the md5sum has not been seen, add it to the associative array
+    md5sums[$md5]="$file"
+  fi
+done

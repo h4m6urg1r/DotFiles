@@ -1,0 +1,55 @@
+(include "./ewwVariables.yuck")
+
+(defwidget bar []
+  (box :class "barWidget"
+       :orientation "v"
+       :vexpand "false"
+       :hexpand "false"
+       :space-evenly "false"
+    (appMenu)
+    (workspaceButtonCluster)
+    (reload)
+    (controlCenter)
+    ))
+
+(defwidget workspaceButtonCluster []
+  (box :class "workspace"
+       :orientation "v"
+       :vexpand "false"
+       :hexpand "false"
+    ;(label "${test}")
+    ;(for workspace in workspaces
+      ;(button arraylength(workspaceIcons)>=workspace["name"]?'a':'a'))
+    (literal :content workspaceButtons)
+    ))
+
+(defwidget appMenu []
+  (button :class "appMenu"
+          :orientation "v"
+          :vexpand "false"
+          :hexpand "false"
+    (box)))
+
+(defwidget reload []
+  (button :class "reloadButton"
+          :orientation "v"
+          :vexpand "false"
+          :hexpand "false"
+    ;(box)
+    "hello"))
+
+(defwidget battery []
+  "bat")
+
+(defwidget controlCenter []
+  (box
+    (circular-progress :value 50
+                        :thickness 21
+        (label :text "eh"
+               :class "radial-label"
+               :limit-width 2
+               :show_truncated false
+               :wrap false
+               :angle 0.0))
+  ;"test"
+  ))

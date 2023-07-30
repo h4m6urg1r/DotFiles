@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+
+internetAvailable() {
+    wget --spider --quiet https://google.com; if [ "$?" != 0 ]; then echo "0";else echo "1"; fi
+}
+
+hasPassword() {
+    
+}
+
+strength0() {
+    if [ internetAvailable ]
+    then
+        echo "󰤟"
+    else
+        echo "󰤠"
+    fi
+}
+
+strength1() {
+    if [ internetAvailable ]
+    then
+        echo "󰤟"
+    else
+        echo "󰤠"
+    fi
+}
+
+strength2() {
+    if [ internetAvailable ]
+    then
+        echo "󰤢"
+    else
+        echo "󰤣"
+    fi
+}
+
+strength3() {
+    if [ internetAvailable ]
+    then
+        echo "󰤥"
+    else
+        echo "󰤦"
+    fi
+}
+
+strength4() {
+    if [ internetAvailable ]
+    then
+        echo "󰤨"
+    else
+        echo "󰤩"
+    fi
+}
+
+main() {
+    if [ $strength < 5 ]
+    then
+        strength0 $1
+    else if [ $strength < 25 ]
+    then
+        strength1 $1
+    else if [ $strength < 50 ]
+    then
+        strength2 $1
+    else if [ $strength < 75 ]
+    then
+        strength3 $1
+    else
+        strength4 $1
+    fi
+}

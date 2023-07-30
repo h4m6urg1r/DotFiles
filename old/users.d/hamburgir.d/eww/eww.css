@@ -1,0 +1,53 @@
+/*
+You can type here any CSS rule recognized by GTK+.
+You can temporarily disable this custom CSS by clicking on the “Pause” button above.
+
+Changes are applied instantly and globally, for the whole application.
+*/
+
+*{
+all: unset;
+}
+
+@define-color background #272822;
+@define-color foreground #F9F8F5;
+
+@define-color black #272822;
+@define-color gray #75715E;
+@define-color red #F92672;
+@define-color green #A6E22E;
+@define-color yellow #F4BF75;
+@define-color blue #66D9EF;
+@define-color magenta #AE81FF;
+@define-color cyan #A1EFE4;
+@define-color white @foreground;
+
+@define-color workspaceActiveOccupied @green;
+@define-color workspaceActiveUnoccupied @workspaceActiveOccupied;
+@define-color workspaceOccupied @cyan;
+@define-color workspaceInactiveUnoccupied @gray;
+
+.workspace{
+color: @background;
+opacity: 1;
+}
+
+.InactiveUnoccupied{
+background-color: @workspaceInactiveUnoccupied;
+margin: .55rem 0 .55rem 0;
+}
+
+.InactiveOccupied{
+background-color: @workspaceOccupied;
+margin: .55rem 0 .55rem 0;
+}
+
+.ActiveOccupied{
+background-color: @workspaceActiveOccupied;
+margin: .55rem 0 .55rem 0;
+}
+
+.ActiveUnoccupied{
+background-color: @workspaceActiveUnoccupied;
+margin: .55rem 0 .55rem 0;
+}

@@ -1,0 +1,9 @@
+(defvar workspaceIcons "[   ]")
+
+(deflisten workspaceButtons :initial ""
+  `scripts/workspaces`)
+
+;(deflisten wsps :initial ""
+  ;`scripts/workspace`)
+
+;(defvar test '[{"name":0,"status":["Inactive","Unoccupied"]},{"name":1,"status":["Active","Occupied"]},{"name":2,"status":["Inactive","Unoccupied"]},{"name":3,"status":["Inactive","Occupied"]},{"name":4,"status":["Inactive","Occupied"]}]')

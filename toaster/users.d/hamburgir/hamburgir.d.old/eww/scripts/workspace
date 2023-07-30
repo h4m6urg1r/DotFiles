@@ -1,0 +1,52 @@
+#!/bin/env bash
+
+ORIENTATION="v"
+# workspaceSymbols=(   )
+workspaceSymbols=(   )
+
+activeWorkspace() {
+    echo "$(xprop -root _NET_CURRENT_DESKTOP | sed 's/^.*= //')"
+}
+
+isActive() {
+    if [[ $1 -eq $(xprop -root _NET_CURRENT_DESKTOP | sed 's/^.*= //') ]]
+    then
+        echo 1
+    else
+        echo 0
+    fi
+}
+
+hasWindows() {
+    if [[ $(wmctrl -l | sed 's/0x[[:alnum:]]*\s*\([-[:digit:]]*\)\s.*/\1/' | sed '/-/d') == *"$1"* ]]
+    then
+        echo 1
+    else
+        echo 0
+    fi
+}
+
+yuckTemplate() {
+    # echo "(box :class \"$([[ $(isActive $1) -eq 1 ]] && echo "workspaceActive" || echo "workspaceInactive")\" :orientation \"$ORIENTATION\" (button :class \"$([[ $(hasWindows $1) -eq 1 ]] && echo "workspaceOccupied" || echo "workspaceUnoccupied")\" :onclick \"wmctrl -s $1\" \"$i\"))"
+    echo "(button :class \"$([[ $(isActive $1) -eq 1 ]] && echo "Active" || echo "Inactive")$([[ $(hasWindows $1) -eq 1 ]] && echo "Occupied" || echo "Unoccupied")\" :width 5 :vexpand false :hexpand false :onclick \"wmctrl -s $1\" (box :class \"workspaceButtonBox\" \"$([[ ${workspaceSymbols[i]} ]] && echo "${workspaceSymbols[i]}" || expr $i + 1)\"))"
+}
+
+generateEwwConf() {
+    template=""
+    json='[]'
+    numOfWspc=$(xprop -root _NET_NUMBER_OF_DESKTOPS | sed 's/.*= //')
+    for ((i=0; i<$numOfWspc; i++))
+    do
+        # [[ -z $template ]] && template="\"${workspaceSymbols[$(expr $i - 1)]}\""
+        # template="$template, \"$([[ ${workspaceSymbols[i]} ]] && echo "${workspaceSymbols[i]}" || expr $i + 1)\""
+        json=$(echo $json | jq -Mc --argjson num ${i} --arg active "$([[ $(isActive $i) -eq 1 ]] && echo "Active" || echo "Inactive")" --arg occupied "$([[ $(hasWindows $i) -eq 1 ]] && echo "Occupied" || echo "Unoccupied")" '.+[{"name": $num, "status": [$active, $occupied]}]')
+        # template = "$template $i"
+    done
+    echo "$json"
+    # echo "(box :valign \"center\" :halign \"center\" :class \"workspaces\" :orientation \"$ORIENTATION\" :space-evenly \"true\" $template)"
+}
+
+xprop -spy -root _NET_NUMBER_OF_DESKTOPS _NET_CURRENT_DESKTOP _NET_ACTIVE_WINDOW _NET_CLIENT_LIST_NET_ACTIVE_WINDOW | while read -r _ 
+do
+generateEwwConf
+done

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+MAC="4C:72:74:84:03:8C"
+
+remove(){
+    return $(bluetootctl remove ${MAC})
+}
+
+isPaired(){
+    bluetoothctl devices | grep -o ${MAC}
+}
+
+connect(){
+    while(bluetoothctl connect ${MAC})
+}
+
+main(){
+    if 
+}

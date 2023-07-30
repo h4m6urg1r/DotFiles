@@ -1,0 +1,6 @@
+#include "xresources.d/colors"
+#include "xresources.d/terminals"
+! #include "xresources.d/"
+
+Xcursor.theme: volantes_cursors
+Xcursor.size: 16
