@@ -1,11 +1,13 @@
-{ pkgs, ... }: let
-    flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
-
-    hyprland = (import flake-compat {
-        src = builtins.fetchTarball "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
-    }).defaultNix;
-in {
-    home.packages = with pkgs; [
+{ pkgs, ... }:
+#let
+#    flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
+#
+#    hyprland = (import flake-compat {
+#        src = builtins.fetchTarball "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
+#    }).defaultNix;
+#in
+{
+    home.packages = with pkgs {allowUnfree = true;}; [
         discord
         ranger
         firefox
@@ -19,7 +21,7 @@ in {
     ];
 
     imports = [
-        hyprland.homeManagerModules.default
+        #hyprland.homeManagerModules.default
     ];
 
     programs = {
@@ -88,9 +90,9 @@ in {
         rofi = {
             enable = true;
         };
-        wofi = {
-            enable = true;
-        };
+        #wofi = {
+        #    enable = true;
+        #};
         wezterm = {
             enable = true;
             extraConfig = ''
@@ -111,7 +113,7 @@ in {
                 config.window_background_gradient = {
                     orientation = {
                         Linear = {
-                            angle = 0
+                            angle = 90
                         }
                     },
                     colors = {
@@ -130,11 +132,11 @@ in {
         '';
         home-manager.enable = true;
     };
-    wayland.windowManager.hyprland = {
-        enable = true;
-        xwayland = {
-            enable = true;
-            hidpi = true;
-        };
-    };
+    #wayland.windowManager.hyprland = {
+    #    enable = true;
+    #    xwayland = {
+    #        enable = true;
+    #        hidpi = true;
+    #    };
+    #};
 }
