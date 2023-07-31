@@ -7,7 +7,7 @@
 #    }).defaultNix;
 #in
 {
-    home.packages = with pkgs {allowUnfree = true;}; [
+    home.packages = with pkgs; [
         discord
         ranger
         firefox

@@ -25,8 +25,12 @@
         enableNixpkgsReleaseCheck = true;
 
         sessionPath = [ "$HOME/.local/bin" ];
-        stateVersion = "22.11";
+        stateVersion = "23.05";
     };
 
+    nixpkgs.config = {
+        allowUnfree = true;
+        allowUnfreePredicate = (_: true);
+    };
     services.network-manager-applet.enable = true;
 }
