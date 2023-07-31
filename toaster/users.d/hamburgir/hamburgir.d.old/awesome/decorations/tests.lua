@@ -1,1 +1,0 @@
-local wibox = require('wibox')

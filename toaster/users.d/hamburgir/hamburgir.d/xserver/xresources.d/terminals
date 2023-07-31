@@ -1,5 +1,0 @@
-#define FONTSIZE 19
-#define WINDOWGEOMETRY 60x20
-
-#include "terminals.d/xterm"
-#include "terminals.d/urxvt"
