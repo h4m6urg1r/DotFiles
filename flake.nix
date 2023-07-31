@@ -35,9 +35,10 @@
                         # > Our main nixos configuration file <
                         modules = [ ./nixos/configuration.nix ];
                 };
-                Toaster = nixpkgs.lib.nixosSystem {
+                toaster = nixpkgs.lib.nixosSystem {
                     specialArgs = { inherit inputs; };
-                    modules = [ ./toaster ];
+                    system = "x86_64-linux";
+                    modules = [ ./toaster/configuration.nix ];
                 };
             };
 

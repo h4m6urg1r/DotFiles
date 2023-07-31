@@ -15,5 +15,4 @@
     enableChargeUptoScript = true;
     chargeUpto = 60;
   };
-  nixpkgs.hostPlatform.system = "x86_64-linux";
 }
