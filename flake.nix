@@ -42,15 +42,16 @@
                         ({...}: {
                             nixpkgs.overlays = [
                                 (_: prev: {
-                                    rtl8812au = prev.rtl8812au (old: {
-                                        version = "${prev.version}-modified";
-                                        patches = (old.patches or []) ++ [(
-                                            prev.fetchpatch {
-                                                url = "https://github.com/morrownr/8812au-20210629/commit/b5f4e6e894eca8fea38661e2fc22a2570e0274ad.patch";
-                                                #hash = "sha256-kEH3dyGq+ErVYyUVOA4BfpPw9p3kc5mLGJUz72W4oLQ=";
-                                            }
-                                        )];
-                                    });
+                                    # linuxPackages.rtl8812au = prev.linuxPackages.rtl8812au.overrideAttrs (old: {
+                                    #     version = "${prev.version}-modified";
+                                    #     patches = (old.patches or []) ++ [(
+                                    #         prev.fetchpatch {
+                                    #             url = "https://github.com/morrownr/8812au-20210629/commit/b5f4e6e894eca8fea38661e2fc22a2570e0274ad.patch";
+                                    #             hash = "sha256-kEH3dyGq+ErVYyUVOA4BfpPw9p3kc5mLGJUz72W4oLQ=";
+                                    #         }
+                                    #     )];
+                                    # });
+                                    linuxPackages.rtl8812au = prev.linuxPackages.rtl8812au.overrideAttrs (old: { patches = (old.patches or []) ++ [(prev.fetchpatch {url= "https://github.com/morrownr/8812au-20210629/commit/b5f4e6e894eca8fea38661e2fc22a2570e0274ad.patch"; hash = "sha256-kEH3dyGq+ErVYyUVOA4BfpPw9p3kc5mLGJUz72W4oLQ="; } )]; });
                                 })
                             ];
                         })
