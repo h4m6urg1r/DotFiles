@@ -2,8 +2,6 @@
 vim.o.syntax='on'
   -- Turns on mouse
 vim.o.mouse='a'
-  -- Mr. Mapleader
-vim.g.mapleader="\\"
 
   -- Sets numberline
 vim.o.number=true
@@ -55,10 +53,12 @@ vim.o.foldenable=false
 --vim.o.completeopt='menu,menuone,noselect'
 vim.opt.termguicolors = true
 
+  --Shows sign columns all the time
+vim.o.signcolumn = 'yes'
+
 vim.o.inccommand='nosplit'
   -- Swap files folder
 vim.o.dir='/home/hamburgir/.cache/nvim/swaps/'
-vim.cmd 'colorscheme monokai_pro'
 --[[ vim.cmd [[
     fu! SaveSess()
         execute 'mksession! ' . getcwd() . '/.session.vim'

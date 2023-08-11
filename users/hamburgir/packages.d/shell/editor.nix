@@ -5,6 +5,7 @@
         viAlias = true;
         vimAlias = true;
         vimdiffAlias = true;
+        withPython3 = true;
         extraPython3Packages = pyPkgs: with pyPkgs; [
             python-lsp-server
         ];
@@ -12,7 +13,10 @@
         #     lua-lsp
         # ];
         extraPackages = with pkgs; [
+            fd
+            gcc
             lua-language-server
+            ripgrep
         ];
     };
 }

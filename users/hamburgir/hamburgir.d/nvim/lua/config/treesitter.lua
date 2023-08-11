@@ -20,19 +20,24 @@ require'nvim-treesitter.configs'.setup {
 ]]
 
 require'nvim-treesitter.configs'.setup({
-    ensure_installed = {
+    --[[ ensure_installed = {
         "bash",
+        "c",
+        "cpp",
         "comment",
-        "html",
+        "diff",
+        "git_rebase",
+        "gitcommit",
+        "java",
         "json",
         "lua",
+        "nix",
         "python",
         "regex",
-        "toml",
-        "yaml"
-    },
+    }, ]]
     highlight = {
-        enable = true
+        enable = true,
+        additional_vim_regex_highlighting = false,
     },
     incremental_selection = {
         enable=true,

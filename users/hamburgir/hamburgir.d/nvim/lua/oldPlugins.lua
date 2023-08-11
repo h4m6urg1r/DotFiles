@@ -1,38 +1,36 @@
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
+end
+
+local packer_bootstrap = ensure_packer()
+
+require('packer').startup(function(use)
+  use 'wbthomason/packer.nvim'
+  -- My plugins here
+  -- use 'foo1/bar1.nvim'
+  -- use 'foo2/bar2.nvim'
+
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require('packer').sync()
+  end
+end)
+
 return require('packer').startup(function()
 
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
-
-    use {
-        'tanvirtin/monokai.nvim',
-        'folke/tokyonight.nvim',
-        'olimorris/onedarkpro.nvim',
-        'Mangeshrex/uwu.vim',
-        'wadackel/vim-dogrun',
-        'Avimitin/neovim-deus',
-        'joshdick/onedark.vim'
-    }
     use {
         'xiyaowong/nvim-transparent',  -- enables transparency
         disable=true,
         config=function()
             require('config/nvim-transparent')
-        end
-    }
-
-    -- Treesitter
-    use {
-        'nvim-treesitter/nvim-treesitter',  -- Sec c colors
-        config = function()
-            require('config/treesitter')
-        end
-    }
-
-    -- Lsp
-    use {
-        'neovim/nvim-lspconfig',  -- Manages installed lsp
-        config = function()
-            require('config/nvim-lspconfig')
         end
     }
 
@@ -44,8 +42,6 @@ return require('packer').startup(function()
     --     end
     -- }
 
-    --[[ this is useless now
-    --]]
     -- use{
     --     'ray-x/lsp_signature.nvim',  -- Shows variables to be supplied in a function
     --     after = 'nvim-lspconfig',
@@ -56,21 +52,6 @@ return require('packer').startup(function()
         config = function()
             require('config/lspsaga-nvim')
         end
-    }
-
-    use {
-        {
-            "williamboman/mason.nvim",
-            config = function()
-                require('mason').setup()
-            end
-        },
-        {
-            "williamboman/mason-lspconfig.nvim",
-            config = function()
-                require("mason-lspconfig").setup()
-            end
-        },
     }
 
     -- Shows completion available
@@ -91,21 +72,6 @@ return require('packer').startup(function()
         -- 'hrsh7th/cmp-nvim-lsp-signature-help',
     }
 
-    -- Snippets completion
-    -- use{
-    --     'hrsh7th/cmp-vsnip',
-    --     'hrsh7th/vim-vsnip'
-    -- }
-    use {
-            '/L3MON4D3/LuaSnip',
-            tag = 'v<CurrentMajor>.*',
-            config = function()
-                require('luasnip.loaders.from_vscode').lazy_load()
-            end
-    }
-    use 'rafamadriz/friendly-snippets'
-
-
     -- Code outline helpers (variables and functions)
     use {
         'liuchengxu/vista.vim',
@@ -123,14 +89,6 @@ return require('packer').startup(function()
         opt=true
     }
 
-    -- UI
-    use {
-        'hoob3rt/lualine.nvim',  -- Status line
-        config = function()
-            require('config/lualine')
-        end
-    }
-
     use {
         'akinsho/bufferline.nvim',
         tag = "v2.*",
@@ -146,8 +104,6 @@ return require('packer').startup(function()
         end
     }
 
-    use 'onsails/lspkind-nvim'  -- Adds nerd font icons ( in lualine )
-
     -- Utils
     use {
         "numtostr/FTerm.nvim",  -- Adds a floating terminal
@@ -156,23 +112,6 @@ return require('packer').startup(function()
         end
     }
 
-    use {
-        'windwp/nvim-autopairs',  -- Adds autocompletion for brackets and quotes etc.
-        config = function()
-            require('config/nvim-autopairs')
-        end
-    }
-
-    --[[ Latex helper plugins
-    use {
-        'lervag/vimtex',
-        ft='tex',
-        config = function()
-            require('config/vimtex')
-        end
-    }
-    --]]
-
     --[[ Handy booklet of keybinds
     use {
         'lazytanuki/nvim-mapper',
@@ -180,9 +119,6 @@ return require('packer').startup(function()
         before = "telescope.nvim"
     }
     --]]
-
-    -- Collaborative editing
-    use 'jbyuki/instant.nvim'
 
     -- md previewer
     use {{
@@ -202,36 +138,6 @@ return require('packer').startup(function()
         disable=false,
         run='cd app && yarn install'
     }}
-
-    use {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
-    }
-
-    -- use {
-    --     'christoomey/vim-tmux-navigator',
-    --     config=function()
-    --         require('config/vim-tmux-navigator')
-    --     end
-    -- }
-
-    -- use "fladson/vim-kitty"
-
-    -- Keybinds manager
-    use {
-        "folke/which-key.nvim",
-        config = function()
-            require('config/which-key-nvim')
-        end
-    }
-
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
-        -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} }
-    }
 
     use {
         'jedrzejboczar/possession.nvim',

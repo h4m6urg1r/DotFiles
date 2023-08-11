@@ -1,7 +1,7 @@
 local wk = require('which-key')
+local helpers = require('helpers')
 
-vim.api.nvim_set_keymap('n', '<SPACE>', '<NOP>', { noremap = true })
-vim.g.mapleader = ' '
+-- vim.api.nvim_set_keymap('n', '<SPACE>', '<NOP>', { noremap = true })
 
 --[[
 wk.register({
@@ -36,13 +36,17 @@ wk.register({
     ['<Down>'] = { 'gj', 'Down' },
     ['<C-U>'] = { '<cmd>lua require(\'lspsaga.action\').smart_scroll_with_saga(-1, \'<C-U>\')<CR>', '' },
     ['<C-D>'] = { '<cmd>lua require(\'lspsaga.action\').smart_scroll_with_saga(1, \'<C-U>\')<CR>', '' },
-    ['['] = {
+    --[[ ['['] = {
         d = { '<cmd>Lspsaga diagnostic_jump_prev<CR>', 'Jump to previous diagnostic' },
     },
     [']'] = {
         d = { '<cmd>Lspsaga diagnostic_jump_next<CR>', 'Jump to next diagnostic' },
-    },
+    }, ]]
     ['<leader>'] = {
+        [';'] = {
+            name = '+Neovim',
+            c = { require("telescope.builtin").colorscheme, 'Select Colorscheme' },
+        },
         ['<tab>'] = {
             name = '+Tab',
             ['['] = { '<cmd>tabprevious<CR>', 'Goto previous tab' },
@@ -60,7 +64,7 @@ wk.register({
         },
         c = {
             name = '+Code',
-            a = { '<cmd>Lspsaga code_action<cr>', 'Code Action' },
+            --[[ a = { '<cmd>Lspsaga code_action<cr>', 'Code Action' },
             d = { '<cmd>Lspsaga show_line_diagnostics<CR>', 'Show diagnostics' },
             f = { '<cmd>lua vim.lsp.buf.formatting()<CR>', 'Format code' },
             l = {
@@ -74,23 +78,27 @@ wk.register({
             },
             o = { '', 'Organize imports'},
             r = { '<cmd>Lspsaga rename<cr>', 'Rename variable' },
-            s = { '<cmd>Lspsaga signature_help<CR>', 'Show signature' }
+            s = { '<cmd>Lspsaga signature_help<CR>', 'Show signature' }, ]]
+            R = { function() require('ssr').open() end, 'Structural replace' },
         },
         f = {
             name = '+File',
             f = { '<cmd>Telescope find_files<CR>', 'Find files' },
-            s = { '<cmd>update<CR>', 'Save file' },
+            s = { helpers.save, 'Save file' },
         },
         q = {
             name = '+quit',
         },
         t = {
             name = '+Toggle',
-            t = { '', 'Toggle terminal' },
-            o = { '<cmd>TransparentToggle<CR>', 'Toggle transparency' }
+            h = { '<CMD>noh<CR>', 'Search highlight' },
+            o = { '<CMD>TransparentToggle<CR>', 'Transparency' },
+            r = { '<CMD>set relativenumber!<CR>', 'Relative numbers' },
+            t = { '<CMD>lua require("FTerm").toggle()<CR>', 'Terminal' },
         },
         w = {
             name = '+Window',
+            d = { '<cmd>q<CR>', 'Kill window' },
             h = {'<c-w>h', 'Focus left window'},
             j = {'<c-w>j', 'Focus down window'},
             k = {'<c-w>k', 'Focus up window'},
@@ -116,5 +124,14 @@ wk.register({
 }, {
     mode = 'v',
     silent = true,
-    noremap = true
+    noremap = true,
+})
+
+-- TERMINAL MODE KEYBINDS
+wk.register({
+    ['<A-i>'] = { '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', 'Toggle terminal' },
+}, {
+        mode = 't',
+        silent = true,
+        noremap = true,
 })
