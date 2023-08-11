@@ -5,17 +5,18 @@
 { config, pkgs, inputs, ... }: with pkgs.lib; {
     imports = [
         ./hardware-configuration.nix
+        ./android.nix
         ./audio.nix
         ./bluetooth.nix
-        ./android.nix
         ./bootloader.nix
+        ./environment.nix
         ./gui.nix
         ./miscellaneous.nix
+        ./mysql.nix
         ./network.nix
         ./packages.nix
         ./users.nix
         ./vms.nix
-        ./mysql.nix
         ./zerotier.nix
     ];
 

@@ -15,6 +15,11 @@
         target = ".tmux.conf";
     };
 
+    home.file."WezTerm" = {
+        source = ./hamburgir.d/wezterm;
+        target = ".config/wezterm";
+    };
+
     #home.file."Eww" = {
     #    source = ./hamburgir.d/eww;
     #    target = ".config/eww";

@@ -38,7 +38,24 @@
                 toaster = nixpkgs.lib.nixosSystem {
                     specialArgs = { inherit inputs; };
                     system = "x86_64-linux";
-                    modules = [ ./toaster/configuration.nix ];
+                    modules = [
+                        ({...}: {
+                            nixpkgs.overlays = [
+                                (_: prev: {
+                                    rtl8812au = prev.rtl8812au (old: {
+                                        version = "${prev.version}-modified";
+                                        patches = (old.patches or []) ++ [(
+                                            prev.fetchpatch {
+                                                url = "https://github.com/morrownr/8812au-20210629/commit/b5f4e6e894eca8fea38661e2fc22a2570e0274ad.patch";
+                                                #hash = "sha256-kEH3dyGq+ErVYyUVOA4BfpPw9p3kc5mLGJUz72W4oLQ=";
+                                            }
+                                        )];
+                                    });
+                                })
+                            ];
+                        })
+                        ./toaster/configuration.nix
+                    ];
                 };
             };
 
@@ -53,7 +70,9 @@
                     modules = [ ./home-manager/home.nix ];
                 };
                 "hamburgir" = home-manager.lib.homeManagerConfiguration {
-                    modules = [ ./users/hamburgir/home.nix ];
+                    modules = [
+                        ./users/hamburgir/home.nix
+                    ];
                     pkgs = nixpkgs.legacyPackages.x86_64-linux;
                     extraSpecialArgs = { inherit inputs; };
                 };

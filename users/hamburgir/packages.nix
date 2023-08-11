@@ -12,7 +12,6 @@
         ranger
         firefox
         tmux
-        neovim
         mpv
         zathura
         variety
@@ -22,12 +21,10 @@
 
     imports = [
         #hyprland.homeManagerModules.default
+        ./packages.d
     ];
 
     programs = {
-        alacritty = {
-            enable = true;
-        };
         aria2 = {
             enable = true;
         };
@@ -41,9 +38,6 @@
                 filter_mode = "global";
                 exit_mode = "return-original";
             };
-        };
-        autojump = {
-            enable = false;
         };
         bashmount = {
             enable = true;
@@ -68,22 +62,6 @@
         firefox = {
             enable = true;
         };
-        gh = {
-            enable = true;
-            enableGitCredentialHelper = true;
-            settings = {
-                git_protocol = "ssh";
-                editor = "nvim";
-            };
-        };
-        git = {
-            enable = true;
-            userName = "the-noob-coder69";
-            userEmail = "shantnuprofid@gmail.com";
-            #delta.enable = true;
-            diff-so-fancy.enable = true;
-            ignores = [ "*.tmp" "*.temp" "tmp.*" "temp.*" ];
-        };
         #try havoc
         #try helix
         #htop
@@ -93,39 +71,8 @@
         #wofi = {
         #    enable = true;
         #};
-        wezterm = {
-            enable = true;
-            extraConfig = ''
-                local wezterm = require "wezterm"
-                local config = {}
-                if wezterm.config_builder then
-                    config = wezterm.config_builder()
-                end
-                config.font = wezterm.font("Mononoki Nerd Font Mono")
-                    --[[
-                    {
-                        weight = "Regular",
-                        stretch = "Normal",
-                        style = "Normal"
-                    }
-                    --]]
-                config.color_scheme = 'Dracula'
-                config.window_background_gradient = {
-                    orientation = {
-                        Linear = {
-                            angle = 90
-                        }
-                    },
-                    colors = {
-                        '#0f0c29',
-                        '#302b63',
-                        '#24243e',
-                    },
-                }
-                return config
-            '';
-        };
         bash.enable = true;
+        zellij.enable = true;
         zsh.enable = true;
         zsh.initExtra = ''
             any-nix-shell zsh --info-right | source /dev/stdin
