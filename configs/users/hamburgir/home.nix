@@ -32,8 +32,8 @@
         allowUnfree = true;
         allowUnfreePredicate = (_: true);
     };
-    manual.manpages.enable = false;
-    manual.html.enable = false;
-    manual.json.enable = false;
+    manual.manpages.enable = true;
+    manual.html.enable = true;
+    manual.json.enable = true;
     services.network-manager-applet.enable = true;
 }
