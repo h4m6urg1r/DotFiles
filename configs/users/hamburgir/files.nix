@@ -25,6 +25,11 @@
         target = ".config/wezterm";
     };
 
+    home.file."i3" = {
+        source = ./hamburgir.d/i3;
+        target = ".config/i3";
+    };
+
     #home.file."Eww" = {
     #    source = ./hamburgir.d/eww;
     #    target = ".config/eww";
