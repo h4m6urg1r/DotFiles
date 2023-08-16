@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
     xsession.enable = true;
     xsession.windowManager.awesome = {
         enable = false;
@@ -8,5 +8,9 @@
             lgi
         ];
     };
-    wayland.windowMnagaer.hyprland.enable = true;
+    wayland.windowManager.hyprland = {
+        enable = true;
+        # extraConfig = config.hyprland.config.file;
+        extraConfig = (builtins.readFile ./hamburgir.d/hypr/hyprland.conf);
+    };
 }

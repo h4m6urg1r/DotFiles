@@ -11,7 +11,7 @@
             if wezterm.config_builder then
                 config = wezterm.config_builder()
                     end
-                    config.font_size = 12.7
+                    config.font_size = 12.4
                     config.font = wezterm.font("Mononoki Nerd Font Mono")
                     --[[
                     {
