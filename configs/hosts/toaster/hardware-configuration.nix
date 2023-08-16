@@ -11,7 +11,8 @@
     ./hardware.d/asusBattery.nix
     #./hardware.d/networking.nix
   ];
-  config.hardware.asus.battery = {
+  nixpkgs.hostPlatform = "x86_64-linux";
+  hardware.asus.battery = {
     enableChargeUptoScript = true;
     chargeUpto = 60;
   };

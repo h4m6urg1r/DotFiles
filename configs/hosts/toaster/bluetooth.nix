@@ -1,13 +1,11 @@
-{ config, ... }: let
-    cfg = config.userdefined;
-in {
-  services.blueman.enable = cfg.bluetooth.enable;
+{ config, ... }: {
+  services.blueman.enable = true;
   hardware.bluetooth = {
-    enable = cfg.bluetooth.enable;
-    powerOnBoot = cfg.bluetooth.powerOnBoot;
+    enable = true;
+    powerOnBoot = false;
     settings = {
       General = {
-        ControllerMode = cfg.bluetooth.controllerMode;
+        ControllerMode = "bredr";
       };
     };
   };

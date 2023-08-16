@@ -5,6 +5,7 @@
     acpi
     brightnessctl
     neovim
+    nnn
     ranger
     unrar
     unzip

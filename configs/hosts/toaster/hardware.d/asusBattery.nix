@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 let
   p = pkgs.writeScriptBin "chargeUpto" ''
-    echo ''${0:-100} > $(ls /sys/class/power_supply/BAT?/charge_control_end_threshold)
+    echo ''${0:-100} | sudo tee /sys/class/power_supply/BAT?/charge_control_end_threshold
   '';
   cfg = config.hardware.asus.battery;
 in

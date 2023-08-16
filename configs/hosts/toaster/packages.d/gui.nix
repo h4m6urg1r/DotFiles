@@ -3,6 +3,8 @@
     gparted
     xclip
     gnome.zenity
+    pkgs.dunst
+    libnotify
     # firefox
     #sway
   ];

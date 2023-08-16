@@ -13,6 +13,8 @@
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    grub2-themes.url = "github:vinceliuice/grub2-themes";
+
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
 
@@ -21,7 +23,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { grub2-themes, self, nixpkgs, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -58,9 +60,9 @@
       nixosConfigurations = {
         toaster = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          system = "x86_64-linux";
           modules = [
-            ./configs/hosts/toaster
+            grub2-themes.nixosModules.default
+            ./configs/hosts/toaster/configuration.nix
           ];
         };
       };

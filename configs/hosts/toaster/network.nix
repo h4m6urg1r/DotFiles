@@ -1,7 +1,5 @@
-{ config, ... }: let 
-    cfg = config.userdefined;
-in {
-  networking.hostName = cfg.hostname; # Define your hostname.
+{ config, ... }: {
+  networking.hostName = "toaster"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -11,12 +9,13 @@ in {
   # Enable networking
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 80 443 8022 ];
+    allowPing = true;
+    # allowedTCPPorts = [ 80 443 8022 ];
   };
-  networking.networkmanager.enable = cfg.networkManager.enable;
+  networking.networkmanager.enable = true;
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = cfg.ssh.enable;
+  services.openssh.enable = true;
   services.openssh.ports = [
     22
     8022
