@@ -15,6 +15,8 @@
 
     grub2-themes.url = "github:vinceliuice/grub2-themes";
 
+    hyprland.url = "github:hyprwm/Hyprland";
+
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
 
@@ -23,7 +25,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { grub2-themes, self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { hyprland, grub2-themes, self, nixpkgs, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -72,6 +74,7 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
+            hyprland.homeManagerModules.default
             ./configs/users/hamburgir/home.nix
           ];
         };

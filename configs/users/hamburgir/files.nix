@@ -30,6 +30,11 @@
         target = ".config/i3";
     };
 
+    home.file."Hyprland" = {
+        source = ./hamburgir.d/hypr;
+        target = ".config/hypr";
+    };
+
     #home.file."Eww" = {
     #    source = ./hamburgir.d/eww;
     #    target = ".config/eww";

@@ -8,4 +8,5 @@
             lgi
         ];
     };
+    wayland.windowMnagaer.hyprland.enable = true;
 }
