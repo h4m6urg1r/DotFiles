@@ -15,10 +15,13 @@
 
     grub2-themes.url = "github:vinceliuice/grub2-themes";
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    # hyprland.url = "github:hyprwm/Hyprland";
+    hy3 = {
+        url = "github:outfoxxed/hy3";
+        inputs.hyprland.follows = "hyprland";
+    };
 
-    # TODO: Add any other flake you might need
-    # hardware.url = "github:nixos/nixos-hardware";
+    webcord.url = "github:fufexan/webcord-flake";
 
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!

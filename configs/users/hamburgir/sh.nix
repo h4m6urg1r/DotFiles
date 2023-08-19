@@ -1,8 +1,4 @@
 { ... }: {
-    home.sessionVariables = {
-        EDITOR = "nvim";
-    };
-
     home.shellAliases = {
         "la" = "ls -A";
         "ll" = "ls -l";

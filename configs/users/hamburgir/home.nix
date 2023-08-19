@@ -1,7 +1,9 @@
 { config, lib, outputs, options, pkgs, ... }: {
     imports = [
+        ./environment.nix
         ./files.nix
         ./gui.nix
+        ./xdg.nix
         ./packages.nix
         ./sh.nix
         ./theme.nix
@@ -17,8 +19,8 @@
                     description = ''
                     0: Focus does not follow mouse, mouse and keyboard have same focus
                     1: Focus follows mouse, mouse and keyboard have same focus
-                    2: Keyboard follows mouse click
-                    3: Keyboard and mouse focus are different
+                    2: Keyboard focus follows mouse click
+                    3: Keyboard focus and mouse focus are different
                     '';
                 };
                 mouseRefocus = lib.mkOption {
@@ -32,6 +34,18 @@
                     default = "super";
                     type = lib.types.str;
                     description = "Default mod key";
+                };
+            };
+            theme = {
+                windowGaps = lib.mkOption {
+                    default = 4;
+                    type = lib.types.number;
+                    description = "Gaps between windows";
+                };
+                outerGaps = lib.mkOption {
+                    default = config.wm.theme.windowGaps * 2;
+                    type = lib.types.number;
+                    description = "Gaps outside window area";
                 };
             };
             gesture = {

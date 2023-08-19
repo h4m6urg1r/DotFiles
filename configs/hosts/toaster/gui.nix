@@ -1,15 +1,15 @@
-{ pkgs, ... }: {
+{ outputs, pkgs, ... }: {
     # Enable the X11 windowing system.
 
     services.xserver.desktopManager = {
-        xfce.enable = true;
+        xfce.enable = false;
         gnome.enable = false;
-        plasma5.enable = true;
+        plasma5.enable = false;
     };
 
 
     services.xserver.windowManager = {
-        qtile.enable = true;
+        qtile.enable = false;
         i3.enable = true;
         herbstluftwm.enable = false;
         awesome = {
@@ -37,7 +37,7 @@
     };
     services.gnome.gnome-keyring.enable = true;
     programs.hyprland = {
-        enable = true;
+        enable = false;
         xwayland.enable = true;
     };
     xdg.portal = {

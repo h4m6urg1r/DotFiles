@@ -1,4 +1,5 @@
 { config, ... }: {
+    wm.rules.focusType = 1;
     wayland.windowManager.hyprland.extraConfig = ''
     input {
         kb_layout = us
