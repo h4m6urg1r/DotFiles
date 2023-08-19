@@ -21,7 +21,7 @@
         };
     };
 
-    programs.sway.enable = false;
+    programs.sway.enable = true;
 
     services.xserver.displayManager = {
         gdm.enable = false;
@@ -37,7 +37,7 @@
     };
     services.gnome.gnome-keyring.enable = true;
     programs.hyprland = {
-        enable = false;
+        enable = true;
         xwayland.enable = true;
     };
     xdg.portal = {

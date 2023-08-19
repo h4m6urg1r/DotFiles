@@ -1,7 +1,8 @@
 { pkgs, ... }: {
     imports = [
-        ./terminalEmu.nix
         ./miscellaneous.nix
+        ./notifications.nix
         ./socialMedia.nix
+        ./terminalEmu.nix
     ];
 }

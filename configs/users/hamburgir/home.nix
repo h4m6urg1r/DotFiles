@@ -35,6 +35,11 @@
                     type = lib.types.str;
                     description = "Default mod key";
                 };
+                keybinds = {
+                    movement = {
+                        
+                    };
+                };
             };
             theme = {
                 windowGaps = lib.mkOption {
@@ -74,6 +79,11 @@
                     default = true;
                     type = lib.types.bool;
                     description = "Anime character rendering UwU";
+                };
+                layout = lib.mkOption {
+                    default = "hy3";
+                    type = lib.types.str;
+                    description = "Default layout";
                 };
             };
         };

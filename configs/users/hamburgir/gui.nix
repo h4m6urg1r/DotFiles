@@ -7,6 +7,9 @@
             lgi
         ];
     };
+    wayland.windowManager.sway = {
+        enable = true;
+    };
     wayland.windowManager.hyprland = {
         enable = true;
         # extraConfig = config.hyprland.config.file;
