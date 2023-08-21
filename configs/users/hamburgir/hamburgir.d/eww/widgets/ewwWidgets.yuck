@@ -38,6 +38,7 @@
          :class "BarRight"
          :space-evenly true
          :halign "end"
-        (label :justify "left"
-               :text "right side of the bar")
+        (timeWidget :format '%H:%M %P')
+        ;; (label :justify "left"
+        ;;        :text "right side of the bar")
     ))
