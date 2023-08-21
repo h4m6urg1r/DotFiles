@@ -22,6 +22,8 @@
     };
 
     webcord.url = "github:fufexan/webcord-flake";
+    eww.url = "github:elkowar/eww";
+    rust-overlay.url = "github:oxalica/rust-overlay";
 
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!

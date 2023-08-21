@@ -1,12 +1,4 @@
-{ pkgs, ... }:
-#let
-#    flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
-#
-#    hyprland = (import flake-compat {
-#        src = builtins.fetchTarball "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
-#    }).defaultNix;
-#in
-{
+{ inputs, pkgs, ... }: {
     home.packages = with pkgs; [
         discord
         ranger
@@ -22,6 +14,10 @@
     imports = [
         #hyprland.homeManagerModules.default
         ./packages.d
+    ];
+    nixpkgs.overlays = [
+        inputs.eww.overlays.default
+        inputs.rust-overlay.overlays.default
     ];
 
     programs = {
@@ -58,6 +54,7 @@
         eww = {
             enable = true;
             configDir = ./hamburgir.d/eww;
+            package = pkgs.eww-wayland;
         };
         firefox = {
             enable = true;

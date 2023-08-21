@@ -6,6 +6,7 @@
     imports = [
         ./hardware-configuration.nix
         ./audio.nix
+        ./automount.nix
         ./bluetooth.nix
         ./bootloader.nix
         ./environment.nix
