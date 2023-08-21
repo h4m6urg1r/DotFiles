@@ -1,0 +1,3 @@
+(include "ewwVariables.yuck")
+(include "./widgets/network/wifi.yuck")
+(include "./widgets/miscellaneous/eww.yuck")

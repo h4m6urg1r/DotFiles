@@ -1,0 +1,5 @@
+(defwidget timeWidget [orientation]
+ (button :class "date"
+   (box :orientation "${orientation}"
+        :tooltip "${formattime(EWW_TIME, '%r %v')}"
+     "${formattime(EWW_TIME, '%r')}")))

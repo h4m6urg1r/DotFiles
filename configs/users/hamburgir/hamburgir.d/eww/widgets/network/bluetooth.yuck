@@ -1,0 +1,4 @@
+(defwidget bluetoothButton [orientation ?class]
+  (button :class "${class}BluetoothButton"
+  'placeholder'))
+

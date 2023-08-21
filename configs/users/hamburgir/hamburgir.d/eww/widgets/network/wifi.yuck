@@ -1,5 +1,3 @@
-(include "ewwVariables.yuck")
-
 (defwidget wifiIcon [orientation ?class]
   (box :class "${class}WifiIcon"
        :tooltip "Wi-Fi: ${wifiName?:'Disconnected'}"
@@ -23,19 +21,3 @@
     (box :orientation orientation
       dropdownButtonSymbol)))
 
-(defwidget bluetoothButton [orientation ?class]
-  (button :class "${class}BluetoothButton"
-  'placeholder')
-)
-
-(defwidget musicVisualizer [orientation ?class]
-  (label :orientation orientation
-         :class "${class}MusicVisualizer"
-         :text "${musicVisual?:'bruh'}"))
-
-;;check again when new version of eww is released
-;;(defwidget timeWidget [orientation]
-;;  (button :class "date"
-;;    (box :orientation "${orientation}"
-;;         :tooltip `formattime("${EWW_TIME}", '%r %v')`
-;;      `formattime("${EWW_TIME}", '%r')`)))

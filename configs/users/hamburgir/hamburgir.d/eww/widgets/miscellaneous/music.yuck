@@ -1,0 +1,5 @@
+(defwidget musicVisualizer [orientation ?class]
+  (label :orientation orientation
+         :class "${class}MusicVisualizer"
+         :text "${musicVisual?:'bruh'}"))
+

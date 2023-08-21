@@ -1,12 +1,23 @@
-(include "ewwWidgets.yuck")
-(defwindow testing
+(include "./widgets/ewwWidgets.yuck")
+(defwindow testing-wl
   :monitor 0
-  :geometry (geometry :x "0%"
-                      :y "0%"
-                      :anchor "top center")
-  (box 
+  :geometry (geometry :anchor "top center")
+  :stacking "fg"
+  :exclusive true
+  (box :space-evenly false
     (wifiButton :orientation "h")
     (toggleWifiButton :orientation "h")
-    (musicVisualizer :orientation "h")
-    ;;(timeWidget :orientation "h")
+    ;; (musicVisualizer :orientation "h")
+    (timeWidget :orientation "h")
     ))
+;; (defwindow testing
+;;   :monitor 0
+;;   :geometry (geometry :x "0%"
+;;                       :y "0%"
+;;                       :anchor "top center")
+;;   (box 
+;;     (wifiButton :orientation "h")
+;;     (toggleWifiButton :orientation "h")
+;;     (musicVisualizer :orientation "h")
+    ;;(timeWidget :orientation "h")
+;;     ))
