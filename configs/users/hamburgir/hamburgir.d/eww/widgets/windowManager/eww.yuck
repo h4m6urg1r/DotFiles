@@ -1,8 +1,6 @@
 ;; (include "./widgets/windowManager/windowTitle.yuck")
-(deflisten __initWinTitle :initial "..."
-  `hyprctl activewindow -j | jq --raw-output .title`)
-(deflisten _winTitle :initial ""
-  `socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | stdbuf -o0 awk -F '>>|,' '/^activewindow>>/{print $3}'`)
+
+(deflisten _windowTitle :initial "..." "/bin/sh ~/.config/eww/scripts/get-window-title")
 
 (defwidget windowTitle [ ?orientation ]
     (box 
@@ -11,4 +9,21 @@
                :wrap false
                :truncate-left false
                ;; :hexpand true
-               :text "${_winTitle?:__initWinTitle}")))
+               :text "${_windowTitle}")))
+
+(deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
+(deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
+(defwidget workspaces []
+  (eventbox :onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}" :class "workspaces-widget"
+    (box :space-evenly true
+      (label :text "${workspaces}${current_workspace}" :visible false)
+      (for workspace in workspaces
+        (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
+          (box :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
+            (label :text "${workspace.id}")
+            )
+          )
+        )
+      )
+    )
+  )

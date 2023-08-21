@@ -23,8 +23,9 @@
          :class "BarLeft"
          :space-evenly false
          :halign "start"
-        (label :justify "left"
-               :text "left side of the bar")
+        (workspaces)
+        ;; (label :justify "left"
+        ;;        :text "left side of the bar")
     ))
 (defwidget barMiddle [ ?orientation ]
     (box :orientation "${orientation?:"h"}"
