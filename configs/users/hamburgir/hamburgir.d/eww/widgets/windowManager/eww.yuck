@@ -1,0 +1,14 @@
+;; (include "./widgets/windowManager/windowTitle.yuck")
+(deflisten __initWinTitle :initial "..."
+  `hyprctl activewindow -j | jq --raw-output .title`)
+(deflisten _winTitle :initial ""
+  `socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | stdbuf -o0 awk -F '>>|,' '/^activewindow>>/{print $3}'`)
+
+(defwidget windowTitle [ ?orientation ]
+    (box 
+        (label :class "WindowTitle"
+               :limit-width 50
+               :wrap false
+               :truncate-left false
+               ;; :hexpand true
+               :text "${_winTitle?:__initWinTitle}")))

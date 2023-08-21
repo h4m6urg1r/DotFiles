@@ -1,3 +1,42 @@
 (include "ewwVariables.yuck")
 (include "./widgets/network/wifi.yuck")
 (include "./widgets/miscellaneous/eww.yuck")
+(include "./widgets/windowManager/eww.yuck")
+(include "./widgets/extra/eww.yuck")
+
+(defwidget background []
+  (box
+    (image :path "${wallpaper}"
+           :image-width 1920
+           :image-height 1080)))
+
+(defwidget bar [ ?orientation ]
+    (box :orientation "${orientation?:"h"}"
+         :class "Bar"
+        (barLeft)
+        (barMiddle)
+        (barRight)
+    ))
+
+(defwidget barLeft [ ?orientation ]
+    (box :orientation "${orientation?:"h"}"
+         :class "BarLeft"
+         :space-evenly false
+         :halign "start"
+        (label :justify "left"
+               :text "left side of the bar")
+    ))
+(defwidget barMiddle [ ?orientation ]
+    (box :orientation "${orientation?:"h"}"
+         :class "BarMiddle"
+         :halign "center"
+        (windowTitle :class "BarMiddle")
+    ))
+(defwidget barRight [ ?orientation ]
+    (box :orientation "${orientation?:"h"}"
+         :class "BarRight"
+         :space-evenly true
+         :halign "end"
+        (label :justify "left"
+               :text "right side of the bar")
+    ))
