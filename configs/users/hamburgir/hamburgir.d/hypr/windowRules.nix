@@ -1,5 +1,6 @@
 { config, ... }: {
     wayland.windowManager.hyprland.extraConfig = ''
-        windowrule = float, class:^(firefox)$, title:(Tree Style Tab)
+        windowrulev2 = float, class:(firefox), title:^(Close Firefox)
+        windowrule = float, class:^(firefox)
     '';
 }
