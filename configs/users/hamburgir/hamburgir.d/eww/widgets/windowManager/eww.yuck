@@ -1,7 +1,7 @@
 ;; (include "./widgets/windowManager/windowTitle.yuck")
 
-(deflisten _windowTitle :initial "..." "/bin/sh ~/.config/eww/scripts/get-window-title")
-
+(deflisten _windowTitle :initial "" ;;"/bin/sh ~/.config/eww/scripts/get-window-title")
+ `hyprctl activewindow -j | jq --raw-output .title | sed "s/null//" && socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | stdbuf -o0 awk -F '>>|,' '/^activewindow>>/{print $3}'`)
 (defwidget windowTitle [ ?orientation ]
     (box 
         (label :class "WindowTitle"

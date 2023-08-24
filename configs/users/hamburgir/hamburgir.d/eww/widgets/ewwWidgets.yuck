@@ -39,6 +39,7 @@
          :space-evenly true
          :halign "end"
         (timeWidget :format '%H:%M %P')
+        (systray)
         ;; (label :justify "left"
         ;;        :text "right side of the bar")
     ))

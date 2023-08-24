@@ -1,4 +1,5 @@
 { config, inputs, pkgs, ... }: {
+    xsession.windowManager.i3.enable = true;
     xsession.windowManager.awesome = {
         enable = false;
         luaModules = with pkgs.luaPackages; [
@@ -7,6 +8,7 @@
             lgi
         ];
     };
+
     wayland.windowManager.sway = {
         enable = true;
     };

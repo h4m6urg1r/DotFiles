@@ -113,17 +113,17 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1692366702,
-        "narHash": "sha256-GEysmNDm+olt1WXHzRwb4ZLifkXmeP5+APAN3b81/Og=",
-        "owner": "elkowar",
-        "repo": "eww",
-        "rev": "a9a35c1804d72ef92e04ee71555bd9e5a08fa17e",
-        "type": "github"
+        "lastModified": 1692622179,
+        "narHash": "sha256-vxMGAa/RTsMADPK4dM/28SV2ktCT0DenYvGsHZ4IJ8c=",
+        "ref": "refs/heads/systray",
+        "rev": "a82ed62c25ba50f28dc8c3d57efe440d51d6136b",
+        "revCount": 621,
+        "type": "git",
+        "url": "file:///home/hamburgir/repo/eww"
       },
       "original": {
-        "owner": "elkowar",
-        "repo": "eww",
-        "type": "github"
+        "type": "git",
+        "url": "file:///home/hamburgir/repo/eww"
       }
     },
     "fenix": {

@@ -1,4 +1,9 @@
 { config, ... }: {
+    wm.hyprland = {
+        logo.enable = false;
+        splash.enable = false;
+        forceHyprChan = false;
+    };
     wayland.windowManager.hyprland.extraConfig = ''
     misc {
         disable_hyprland_logo = ${ if config.wm.hyprland.logo.enable then "false" else "true" }

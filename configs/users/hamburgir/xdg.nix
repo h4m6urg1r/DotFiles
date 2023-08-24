@@ -2,7 +2,7 @@
     xsession = {
         enable = true;
         numlock.enable = false;
-        windowManager.command = "sway";
+        # windowManager.command = "sway";
     };
     home = {
         pointerCursor = {
