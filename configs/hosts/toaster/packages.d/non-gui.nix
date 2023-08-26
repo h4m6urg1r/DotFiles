@@ -7,8 +7,6 @@
     neovim
     nnn
     ranger
-    unrar
-    unzip
     wget
   ];
 }
