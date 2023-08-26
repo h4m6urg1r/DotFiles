@@ -17,8 +17,15 @@ outputs = { self, nixpkgs, flake-utils }:
       buildToolsVersion = "30.0.3";
       androidComposition = pkgs.androidenv.composeAndroidPackages {
         buildToolsVersions = [ buildToolsVersion "28.0.3" ];
-        platformVersions = [ "28" ];
+        platformVersions = [ "29" "28" ];
         abiVersions = [ "arm64-v8a" ];
+        extraLicenses = [
+            "android-googletv-license"
+            "android-sdk-arm-dbt-license"
+            "android-sdk-preview-license"
+            "google-gdk-license"
+            "mips-android-sysimage-license"
+        ];
       };
       androidSdk = androidComposition.androidsdk;
     in
@@ -29,7 +36,8 @@ outputs = { self, nixpkgs, flake-utils }:
           buildInputs = [
             flutter
             androidSdk
-            # jdk11
+            gradle
+            jdk11
           ];
         };
     });
