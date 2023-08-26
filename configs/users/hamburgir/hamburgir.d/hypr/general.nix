@@ -1,6 +1,6 @@
 { config, ... }: {
     wayland.windowManager.hyprland.extraConfig = ''
-        exec-once = eww open-many background topbar
+        exec-once = eww open-many topbar & swww init
         general {
             gaps_in = ${ builtins.toString config.wm.theme.windowGaps }
             gaps_out = ${ builtins.toString config.wm.theme.outerGaps }
