@@ -1,5 +1,3 @@
-local nvim_lsp = require('lspconfig')
-
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
     callback = function(event)
@@ -8,12 +6,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- Enable completion triggered by <c-x><c-o>
         -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-        -- Mappings.
-        local opts = { noremap=true, silent=true }
-
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         local bufmap = function(keys, func, desc)
-            vim.keymap.set( 'n', keys, func, { desc = desc, buffer = bufnr } )
+            vim.keymap.set( 'n', keys, func, { noremap = true, silent = true, desc = desc, buffer = event.bufnr } )
         end
 
         bufmap('<leader>cr', vim.lsp.buf.rename, 'Rename identifier')
@@ -36,13 +31,29 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- bufmap( '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', '' )
         -- bufmap( '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', '' )
 
-
-        --[[ vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+        --[[ vim.api.nvim_buf_create_user_command(event.bufnr, 'Format', function(_)
             vim.lsp.buf.format()
         end,
         {}) ]]
     end
 })
+
+local on_attach = function(_, bufnr)
+    vim.api.nvim_create_autocmd("CursorHold", {
+        buffer = bufnr,
+        callback = function()
+            local opts = {
+                focusable = false,
+                close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+                border = 'rounded',
+                source = 'always',
+                prefix = ' ',
+                scope = 'cursor',
+            }
+            vim.diagnostic.open_float(nil, opts)
+        end
+    })
+end
 
 local lspconfig = require('lspconfig')
 local lsp_defaults = lspconfig.util.default_config
@@ -51,26 +62,41 @@ lsp_defaults.capabilities = vim.tbl_deep_extend(
     lsp_defaults.capabilities,
     require('cmp_nvim_lsp').default_capabilities()
 )
+--
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-lspconfig.lua_ls.setup {
-    capabilities = capabilities,
-    Lua = {
-	telemetry = { enable =false }
+local setup = function (t)
+    local conf = {
+        -- capabilities = capabilities,
+        on_attach = on_attach,
     }
-}
-lspconfig.pylsp.setup {
-    capabilities = capabilities,
-}
-lspconfig.nixd.setup {
-    capabilities = capabilities,
-}
+    if t~=nil then
+        for _, v in ipairs(t) do
+            conf[v] = t[v]
+        end
+    end
+    return conf
+end
+
+lspconfig.lua_ls.setup(setup(
+    {
+        Lua = {
+            telemetry = { enable = false }
+        }
+    }
+))
+
+lspconfig.pylsp.setup(setup())
+lspconfig.nixd.setup(setup())
 
 vim.diagnostic.config({
     virtual_text = false,
     signs = true,
-    float = { border = "single" }
+    float = {
+        source = "always",
+        border = "single"
+    }
 })
 
 --[[

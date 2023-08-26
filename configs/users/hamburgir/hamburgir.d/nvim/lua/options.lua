@@ -35,7 +35,7 @@ vim.o.incsearch=true
 vim.o.smartcase=true
 
   -- Always try to show a paragraph’s last line.
-vim.opt.display = vim.opt.display + 'lastline'
+vim.opt.display = vim.opt.display --[[ + 'lastline' ]]
   -- Use an encoding that supports unicode.
 vim.o.encoding='utf-8'
   -- Avoid wrapping a line in the middle of a word.
@@ -52,13 +52,18 @@ vim.o.history=1000
 vim.o.foldenable=false
 --vim.o.completeopt='menu,menuone,noselect'
 vim.opt.termguicolors = true
+  -- CursorHold time
+vim.o.updatetime = 100
 
   --Shows sign columns all the time
 vim.o.signcolumn = 'yes'
 
 vim.o.inccommand='nosplit'
   -- Swap files folder
-vim.o.dir='/home/hamburgir/.cache/nvim/swaps/'
+vim.o.dir = '/home/hamburgir/.cache/nvim/swaps/'
+  -- Undofile
+vim.o.undofile = true
+vim.o.undodir ='/home/hamburgir/.cache/nvim/undo/'
 --[[ vim.cmd [[
     fu! SaveSess()
         execute 'mksession! ' . getcwd() . '/.session.vim'
