@@ -29,24 +29,6 @@ return {
             'nvim-treesitter/nvim-treesitter'
         },
     },
---[[
-    {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
-        config = function()
-            config('lsp-zero')
-        end,
-        dependencies = {
-            -- LSP Support
-            {'neovim/nvim-lspconfig'},             -- Required
-
-            -- Autocompletion
-            {'hrsh7th/nvim-cmp'},     -- Required
-            {'hrsh7th/cmp-nvim-lsp'}, -- Required
-            {'L3MON4D3/LuaSnip'},     -- Required
-        }
-    },
-]]
     {
         'neovim/nvim-lspconfig',
         event = 'BufEnter',
