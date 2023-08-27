@@ -1,6 +1,4 @@
-local config = function(s)
-     return require('config.' .. s)
-end
+local helpers = require("helpers")
 
 return {
     {
@@ -53,7 +51,7 @@ return {
         'neovim/nvim-lspconfig',
         event = 'BufEnter',
         config = function()
-            config('nvim-lspconfig')
+            helpers.config('nvim-lspconfig')
         end,
         dependencies = {
             {
@@ -62,13 +60,20 @@ return {
             },
         },
     },
-    --[[ {
-        'williamboman/mason.nvim',
-        config = true,
+    {
+        'rcarriga/nvim-dap-ui',
+        lazy = true,
+        dependencies = {
+            'mfussenegger/nvim-dap'
+        }
     },
     {
-        'williamboman/mason-lspconfig.nvim',
-    }, ]]
+        'mfussenegger/nvim-dap',
+        lazy = true,
+        config = function ()
+            helpers.config('dap')
+        end,
+    },
     {
         'hrsh7th/nvim-cmp',
         -- load cmp on InsertEnter
@@ -86,7 +91,7 @@ return {
             -- 'hrsh7th/cmp-nvim-lsp-signature-help',
         },
         config = function()
-            config('nvim-cmp')
+            helpers.config('nvim-cmp')
         end,
     },
     {
@@ -104,7 +109,7 @@ return {
         'windwp/nvim-autopairs',
         event = 'InsertEnter',
         config = function()
-            config('autopairs')
+            helpers.config('autopairs')
         end
     },
     {
@@ -118,7 +123,20 @@ return {
             require('nvim-treesitter.install').update({ with_sync = true })
         end,
         config = function ()
-            config('treesitter')
+            helpers.config('treesitter')
         end
-    }
+    },
+    {
+        'akinsho/flutter-tools.nvim',
+        lazy = false,
+        -- event = 'VeryLazy',
+        -- cmd = 'LoadFlutter',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'stevearc/dressing.nvim', -- optional for vim.ui.select
+        },
+        config = function()
+            helpers.config('flutter')
+        end,
+    },
 }
