@@ -45,7 +45,16 @@ wk.register({
     ['<leader>'] = {
         [';'] = {
             name = '+Neovim',
+            ['/'] = { require("telescope.builtin").search_history, 'Search history' },
             c = { require("telescope.builtin").colorscheme, 'Select Colorscheme' },
+            e = { require("telescope.builtin").commands, 'Command history' },
+            h = { require('telescope.builtin').help_tags, 'Find help tags' },
+            s = { '<CMD>luafile %<CR>', 'Source current file' },
+        },
+        ['/'] = {
+            name = '+Lost something?',
+            ['/'] = { require("telescope.builtin").builtin, 'Shows builtins in telescope' },
+            m = { require("telescope.builtin").man_pages, 'Search man pages' },
         },
         ['<tab>'] = {
             name = '+Tab',
@@ -79,11 +88,13 @@ wk.register({
             o = { '', 'Organize imports'},
             r = { '<cmd>Lspsaga rename<cr>', 'Rename variable' },
             s = { '<cmd>Lspsaga signature_help<CR>', 'Show signature' }, ]]
+            F = { require('telescope').extensions.flutter.commands, 'Show flutter commands' },
             R = { function() require('ssr').open() end, 'Structural replace' },
         },
         f = {
             name = '+File',
             f = { '<cmd>Telescope find_files<CR>', 'Find files' },
+            g = { require('telescope.builtin').live_grep, 'Grep text in current directory' },
             s = { helpers.save, 'Save file' },
         },
         q = {
