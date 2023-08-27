@@ -17,8 +17,9 @@
             gcc
             lua-language-server
             ripgrep
-            pkgs.python311Packages.python-lsp-server
-            pkgs.python311Packages.pyls-isort
+            python311Packages.python-lsp-server
+            python311Packages.pyls-isort
+            gnumake
         ];
     };
 }
