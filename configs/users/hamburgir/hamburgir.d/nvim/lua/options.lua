@@ -21,7 +21,9 @@ vim.o.cursorline=true
 vim.o.cursorcolumn=true
 
   -- Shows last used command in status line
-vim.o.showcmd=true
+-- vim.o.showcmd=true
+  -- Global status bar
+vim.o.laststatus = 3
 
   -- Use highlighting when doing a search
 vim.o.showmatch=true

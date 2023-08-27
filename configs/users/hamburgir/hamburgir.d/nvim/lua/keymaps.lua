@@ -34,8 +34,8 @@ wk.register({
     k = { 'gk', 'Up' },
     ['<Up>'] = { 'gk', 'Up' },
     ['<Down>'] = { 'gj', 'Down' },
-    ['<C-U>'] = { '<cmd>lua require(\'lspsaga.action\').smart_scroll_with_saga(-1, \'<C-U>\')<CR>', '' },
-    ['<C-D>'] = { '<cmd>lua require(\'lspsaga.action\').smart_scroll_with_saga(1, \'<C-U>\')<CR>', '' },
+    -- ['<C-U>'] = { '<cmd>lua require(\'lspsaga.action\').smart_scroll_with_saga(-1, \'<C-U>\')<CR>', '' },
+    -- ['<C-D>'] = { '<cmd>lua require(\'lspsaga.action\').smart_scroll_with_saga(1, \'<C-U>\')<CR>', '' },
     --[[ ['['] = {
         d = { '<cmd>Lspsaga diagnostic_jump_prev<CR>', 'Jump to previous diagnostic' },
     },
@@ -102,10 +102,12 @@ wk.register({
         },
         t = {
             name = '+Toggle',
+            e = { '<CMD>Neotree<CR>', 'Explorer' },
             h = { '<CMD>noh<CR>', 'Search highlight' },
-            o = { '<CMD>TransparentToggle<CR>', 'Transparency' },
+            -- o = { '<CMD>TransparentToggle<CR>', 'Transparency' },
             r = { '<CMD>set relativenumber!<CR>', 'Relative numbers' },
-            t = { '<CMD>lua require("FTerm").toggle()<CR>', 'Terminal' },
+            s = { 'Shade' },
+            -- t = { '<CMD>lua require("FTerm").toggle()<CR>', 'Terminal' },
         },
         w = {
             name = '+Window',
@@ -129,7 +131,7 @@ wk.register({
     ['<Down>'] = { 'gj', 'Down' },
     ['<leader>'] = {
         c = {
-            a = { '<cmd><C-U>Lspsaga range_code_action<CR>', 'Code action' }
+            -- a = { '<cmd><C-U>Lspsaga range_code_action<CR>', 'Code action' }
         }
     }
 }, {
