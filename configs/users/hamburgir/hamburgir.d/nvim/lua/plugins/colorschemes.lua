@@ -46,10 +46,10 @@ return {
 	colorScheme( 'wadackel/vim-dogrun' ),
 	colorScheme( 'Avimitin/neovim-deus' ),
 	colorScheme( 'joshdick/onedark.vim' ),
-    {
-        'xiyaowong/nvim-transparent',
-        config = function ()
-            require("config.nvim-transparent")
-        end,
-    },
+    -- {
+    --     'xiyaowong/nvim-transparent',
+    --     config = function ()
+    --         require("config.nvim-transparent")
+    --     end,
+    -- },
 }
