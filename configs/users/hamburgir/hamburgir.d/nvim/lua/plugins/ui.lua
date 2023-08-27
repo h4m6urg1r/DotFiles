@@ -1,3 +1,4 @@
+local helpers = require('helpers')
 return {
     {
         'nvim-lualine/lualine.nvim',
@@ -15,6 +16,9 @@ return {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.2',
         event = 'VeryLazy',
+        config = function ()
+            helpers.config('telescope-nvim')
+        end,
         dependencies = {
             'nvim-lua/plenary.nvim',
         },
