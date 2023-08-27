@@ -22,11 +22,11 @@ local function colorScheme(repo, enable, name, setName)
     else
         return {
             repo,
-            keys = {
-                '<leader>;c',
-                '<CMD>lua require("telescope.builtin").colorscheme<CR>',
-                desc = 'Select Colorscheme',
-            }
+            -- keys = {
+            --     '<leader>;c',
+            --     '<CMD>lua require("telescope.builtin").colorscheme<CR>',
+            --     desc = 'Select Colorscheme',
+            -- }
         }
         --[[
         return {
