@@ -125,4 +125,11 @@ return {
             helpers.config('flutter')
         end,
     },
+    {
+        'lukas-reineke/indent-blankline.nvim',
+        event = 'VeryLazy',
+        config = function ()
+            helpers.config('indentBlankline')
+        end
+    },
 }
