@@ -74,5 +74,13 @@ return {
         --   If not available, we use `mini` as the fallback
         "rcarriga/nvim-notify",
         }
-    }
+    },
+    {
+        'sunjon/shade.nvim',
+        enabled = false,
+        event = 'WinEnter',
+        config = function ()
+            helpers.config('shade')
+        end,
+    },
 }
