@@ -2,7 +2,8 @@ return {
     -- TODO: add some good search and replace tools
     {
         'cshuaimin/ssr.nvim',
-        event = 'UIEnter',
+        -- event = 'UIEnter',
+        keys = { '<leader>cR' },
         config = function()
             require('ssr').setup {
                 border = "rounded",

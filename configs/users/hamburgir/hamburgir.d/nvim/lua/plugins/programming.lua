@@ -3,7 +3,8 @@ local helpers = require("helpers")
 return {
     {
         'numToStr/Comment.nvim',
-        event = 'VeryLazy',
+        -- event = 'VeryLazy',
+        keys = { 'g' },
         config = true,
     },
     {
@@ -55,7 +56,8 @@ return {
     },
     {
         'L3MON4D3/LuaSnip',
-        event = 'VeryLazy',
+        lazy = true,
+        -- event = 'VeryLazy',
         -- follow latest release.
         version = '1.*',
         -- install jsregexp (optional!).
@@ -74,7 +76,8 @@ return {
     {
         'kylechui/nvim-surround',
         -- version = "", -- Use for stability; omit to use `main` branch for the latest features
-        event = 'VeryLazy',
+        -- event = 'VeryLazy',
+        lazy = true,
         config = function()
             require('nvim-surround').setup({
                 -- Configuration here, or leave empty to use defaults
@@ -83,16 +86,16 @@ return {
     },
     {
         'roobert/surround-ui.nvim',
-        event = 'VeryLazy',
+        keys = { 'cs', 'ys', 'ds' },
         dependencies = {
             'kylechui/nvim-surround',
             'folke/which-key.nvim',
         },
-        config = function()
+        config = true, --[[ function()
             require('surround-ui').setup({
             root_key = 'S'
             })
-        end,
+        end, ]]
     },
     {
         'onsails/diaglist.nvim',
@@ -110,9 +113,10 @@ return {
     },
     {
         'akinsho/flutter-tools.nvim',
-        lazy = false,
+        -- lazy = false,
         -- event = 'VeryLazy',
         -- cmd = 'LoadFlutter',
+        keys = { '<leader>cf' },
         dependencies = {
             'nvim-lua/plenary.nvim',
             'stevearc/dressing.nvim', -- optional for vim.ui.select
