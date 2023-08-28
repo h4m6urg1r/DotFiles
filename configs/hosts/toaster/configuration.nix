@@ -9,6 +9,7 @@
         ./automount.nix
         ./bluetooth.nix
         ./bootloader.nix
+        ./dev.nix
         ./environment.nix
         ./gui.nix
         ./miscellaneous.nix
