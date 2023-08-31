@@ -1,2 +1,3 @@
 (include "./widgets/miscellaneous/time.yuck")
 (include "./widgets/miscellaneous/music.yuck")
+(include "./widgets/miscellaneous/battery.yuck")

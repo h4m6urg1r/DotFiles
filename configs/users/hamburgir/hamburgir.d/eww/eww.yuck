@@ -9,6 +9,7 @@
     (toggleWifiButton :orientation "h")
     ;; (musicVisualizer :orientation "h")
     (timeWidget :orientation "h")
+    (radial-battery)
     ))
 
 (defwindow topbar
