@@ -3,14 +3,15 @@
 
     inputs = {
         # Nixpkgs
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+        nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
         # You can access packages and modules from different nixpkgs revs
         # at the same time. Here's an working example:
         nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
         # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
         # Home manager
-        home-manager.url = "github:nix-community/home-manager/release-23.05";
+        home-manager.url = "github:nix-community/home-manager";# release-23.05
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
         grub2-themes.url = "github:vinceliuice/grub2-themes";
@@ -32,7 +33,7 @@
         # nix-colors.url = "github:misterio77/nix-colors";
     };
 
-    outputs = { hyprland, grub2-themes, self, nixpkgs, home-manager, ... }@inputs:
+    outputs = { self, nixpkgs, home-manager, ... }@inputs:
         let
         inherit (self) outputs;
         forAllSystems = nixpkgs.lib.genAttrs [
@@ -70,7 +71,7 @@
             toaster = nixpkgs.lib.nixosSystem {
                 specialArgs = { inherit inputs outputs; };
                 modules = [
-                    grub2-themes.nixosModules.default
+                    inputs.grub2-themes.nixosModules.default
                     ./configs/hosts/toaster/configuration.nix
                 ];
             };
@@ -81,12 +82,10 @@
                 pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
                 extraSpecialArgs = { inherit inputs outputs; };
                 modules = [
-                    hyprland.homeManagerModules.default
                     ./configs/users/hamburgir/home.nix
                 ];
             };
         };
         templates = import ./templates;
-        # templates.flutter.path = ./templates/flutter;
     };
 }
