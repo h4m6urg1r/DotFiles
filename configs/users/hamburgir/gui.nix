@@ -17,7 +17,7 @@
         # extraConfig = config.hyprland.config.file;
         extraConfig = (builtins.readFile ./hamburgir.d/hypr/hyprland.conf);
         plugins = [
-            inputs.hy3.packages.x86_64-linux.hy3
+            # inputs.hy3.packages.x86_64-linux.hy3
         ];
     };
 }

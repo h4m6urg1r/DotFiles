@@ -17,10 +17,10 @@
         grub2-themes.url = "github:vinceliuice/grub2-themes";
 
         hyprland.url = "github:hyprwm/Hyprland";
-        hy3 = {
-            url = "github:outfoxxed/hy3";
-            inputs.hyprland.follows = "hyprland";
-        };
+        # hy3 = {
+        #     url = "github:outfoxxed/hy3";
+        #     inputs.hyprland.follows = "hyprland";
+        # };
 
         webcord.url = "github:fufexan/webcord-flake";
         eww.url = "git+file:///home/hamburgir/repo/eww";
