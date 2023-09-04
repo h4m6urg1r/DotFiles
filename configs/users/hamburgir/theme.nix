@@ -1,18 +1,21 @@
 { pkgs, ... }: {
     gtk = {
-        enable = false;
+        enable = true;
         font = {
             name = "DejaVu Sans";
             size = 11;
         };
         iconTheme = {
             package = pkgs.papirus-icon-theme;
-            name = "Papirus-dark";
+            name = "Papirus-Dark";
         };
         theme = {
             package = pkgs.gnome.gnome-themes-extra;
             name = "Adwaita-dark";
         };
+        gtk3.bookmarks = [
+            "file:///tmp"
+        ];
     };
 
     # home.pointerCursor = {
