@@ -3,11 +3,12 @@
         ./environment.nix
         ./files.nix
         ./gui.nix
-        ./xdg.nix
+        ./hamburgir.d/hypr
+        ./keybinds.nix
         ./packages.nix
         ./sh.nix
         ./theme.nix
-        ./hamburgir.d/hypr
+        ./xdg.nix
     ];
 
     options = {

@@ -12,6 +12,7 @@
         ./dev.nix
         ./environment.nix
         ./gui.nix
+        ./input.nix
         ./miscellaneous.nix
         ./mysql.nix
         ./network.nix
