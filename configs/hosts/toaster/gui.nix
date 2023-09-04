@@ -25,7 +25,10 @@
 
     services.xserver.displayManager = {
         gdm.enable = false;
-        sddm.enable = true;
+        sddm = {
+            enable = true;
+            theme = "elarun";
+        };
         lightdm.enable = false;
     };
 
