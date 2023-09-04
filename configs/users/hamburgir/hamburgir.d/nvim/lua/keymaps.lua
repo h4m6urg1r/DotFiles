@@ -102,7 +102,7 @@ wk.register({
         },
         t = {
             name = '+Toggle',
-            e = { '<CMD>Neotree<CR>', 'Explorer' },
+            e = { '<CMD>Neotree toggle<CR>', 'Explorer' },
             h = { '<CMD>noh<CR>', 'Search highlight' },
             -- o = { '<CMD>TransparentToggle<CR>', 'Transparency' },
             r = { '<CMD>set relativenumber!<CR>', 'Relative numbers' },
