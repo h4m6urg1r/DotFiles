@@ -69,7 +69,7 @@ wk.register({
             n = { '<cmd>bn<CR>', 'Go to next buffer' },
             p = { '<cmd>bp<CR>', 'Go to revious buffer' },
             s = { '<cmd>Telescope buffers<CR>', 'Switch to buffer from list' },
-            y = { '<cmd>%+y<CR>', 'Copy buffer' }
+            y = { '<cmd>%+y +<CR>', 'Copy buffer' }
         },
         c = {
             name = '+Code',
