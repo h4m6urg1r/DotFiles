@@ -63,7 +63,14 @@
         #try helix
         #htop
         rofi = {
-            enable = true;
+            enable = false;
+            plugins = with pkgs; [
+                rofi-calc
+                rofi-emoji
+                rofi-pass
+                rofi-power-menu
+                rofi-file-browser
+            ];
         };
         #wofi = {
         #    enable = true;
