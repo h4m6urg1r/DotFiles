@@ -25,7 +25,7 @@
             enable = true;
         };
         atuin = {
-            enable = true;
+            enable = false;
             settings = {
                 auto_sync = true;
                 update_check = false;
@@ -70,10 +70,6 @@
         #};
         bash.enable = true;
         zellij.enable = true;
-        zsh.enable = true;
-        zsh.initExtra = ''
-            any-nix-shell zsh --info-right | source /dev/stdin
-        '';
         home-manager.enable = true;
     };
     #wayland.windowManager.hyprland = {
