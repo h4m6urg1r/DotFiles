@@ -16,5 +16,6 @@
             diff-so-fancy.enable = true;
             ignores = [ "*.tmp" "*.temp" "tmp.*" "temp.*" ];
         };
+        lazygit.enable = true;
     };
 }
