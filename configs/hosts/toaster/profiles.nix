@@ -1,6 +1,6 @@
 { pkgs }: rec {
   necessary = pkgs.buildEnv {
-    name = "Tools required irrelevent of gui/non-gui system"
+    name = "Tools required irrelevent of gui/non-gui system";
     paths = with pkgs;[
       acpi
       brightnessctl
@@ -8,7 +8,7 @@
       usbutils
       zip
     ];
-    extraOutputsToInstall = [ "man" "doc" ]
+    extraOutputsToInstall = [ "man" "doc" ];
   };
   clitools = pkgs.buildEnv {
     name = "Tools for cli";

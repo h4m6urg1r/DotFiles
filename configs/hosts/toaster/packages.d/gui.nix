@@ -1,11 +1,16 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     gparted
-    xclip
     gnome.zenity
-    pkgs.dunst
+    dunst
     libnotify
+    # xorg
+    xclip
+    xdotool
+    # wayland
+    wl-clipboard
+    wtype
+    ydotool
     # firefox
-    #sway
   ];
 }
