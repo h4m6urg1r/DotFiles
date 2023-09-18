@@ -10,7 +10,7 @@
         };
         git = {
             enable = true;
-            userName = "the-noob-coder69";
+            userName = "Hamburgir";
             userEmail = "shantnuprofid@gmail.com";
             #delta.enable = true;
             diff-so-fancy.enable = true;
