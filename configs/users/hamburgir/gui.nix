@@ -1,5 +1,11 @@
 { config, inputs, pkgs, ... }: {
-    xsession.windowManager.i3.enable = true;
+    xsession.windowManager.i3 = {
+        enable = true;
+        config = {
+            modifier = "Mod4";
+            terminal = "wezterm";
+        };
+    };
     xsession.windowManager.awesome = {
         enable = false;
         luaModules = with pkgs.luaPackages; [
