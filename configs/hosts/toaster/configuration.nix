@@ -8,7 +8,7 @@
         ./audio.nix
         ./automount.nix
         ./bluetooth.nix
-        ./bootloader.nix
+        ./boot
         ./dev.nix
         ./environment.nix
         ./gui.nix
