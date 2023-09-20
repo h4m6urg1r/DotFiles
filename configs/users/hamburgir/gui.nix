@@ -2,8 +2,15 @@
     xsession.windowManager.i3 = {
         enable = true;
         config = {
+            assigns = {
+                "4" = [{ class = "^discord"; }];
+            };
             modifier = "Mod4";
             terminal = "wezterm";
+            startup = [
+                { command = "discord"; }
+            ];
+            workspaceAutoBackAndForth = true;
         };
     };
     xsession.windowManager.awesome = {
