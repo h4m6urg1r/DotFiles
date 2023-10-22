@@ -10,7 +10,7 @@
   networking.firewall = {
     enable = true;
     allowPing = true;
-    # allowedTCPPorts = [ 80 443 8022 ];
+    allowedTCPPorts = [ 5900 ];
   };
   networking.networkmanager.enable = true;
 

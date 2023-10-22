@@ -22,7 +22,7 @@
   :wm-ignore true
   :class "top"
   (box
-    (bar :class "top")))
+    (bar-sway :class "top")))
 
 (defwindow background
   :monitor 0

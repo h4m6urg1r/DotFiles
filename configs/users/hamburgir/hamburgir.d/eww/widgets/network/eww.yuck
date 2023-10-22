@@ -1,2 +1,2 @@
-(import "./wifi.yuck")
-(import "./bluetooth.yuck")
+(include "./widgets/network/wifi.yuck")
+(include "./widgets/network/bluetooth.yuck")

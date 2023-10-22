@@ -13,6 +13,7 @@
         #     lua-lsp
         # ];
         extraPackages = with pkgs; [
+			ccls
             fd
             gcc
             lua-language-server

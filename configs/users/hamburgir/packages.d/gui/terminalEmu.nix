@@ -38,6 +38,7 @@
                     },
                 }
                 --]]
+                config.audible_bell = "Disabled"
             return config
         '';
         };

@@ -86,7 +86,7 @@ lspconfig.lua_ls.setup(setup(
         }
     }
 ))
-
+lspconfig.ccls.setup(setup())
 lspconfig.pylsp.setup(setup())
 lspconfig.nixd.setup(setup())
 

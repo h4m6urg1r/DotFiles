@@ -48,7 +48,7 @@ swap_tiled_layout name="horizontal" {
 }
 
 swap_tiled_layout name="HStacked" {
-    ui min_panes=4 {
+    ui min_panes=2 {
         pane split_direction="horizontal" {
             pane
             pane stacked=true { children; }
@@ -56,7 +56,7 @@ swap_tiled_layout name="HStacked" {
     }
 }
 swap_tiled_layout name="VStacked" {
-    ui min_panes=4 {
+    ui min_panes=2 {
         pane split_direction="vertical" {
             pane
             pane stacked=true { children; }

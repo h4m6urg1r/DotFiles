@@ -128,6 +128,7 @@ return {
     {
         'lukas-reineke/indent-blankline.nvim',
         event = 'VeryLazy',
+		main = "ibl",
         config = function ()
             helpers.config('indentBlankline')
         end

@@ -15,7 +15,7 @@
          :tooltip "Turn wifi ${isWifiOn? 'off' : 'on'}"
       toggleWifiButtonSymbol)))
 
-(defwidget showAvailableWifiButton [orientation ?class]
+(defwidget showAvailableAPButton [orientation ?class]
   (button :class  "${class}ShowAvailableWifiButton"
           :onclick "${EWW_CMD} update showWifiConnectionsTab=true"
     (box :orientation orientation

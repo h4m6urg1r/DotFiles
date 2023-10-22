@@ -20,7 +20,7 @@ dap.configurations.dart = {
         cwd = "${workspaceFolder}",
         toolArgs = {"-d", "linux"},
     },
-    {
+    --[[ {
         type = "flutter",
         request = "launch",
         name = "Launch flutter",
@@ -28,5 +28,5 @@ dap.configurations.dart = {
         flutterSdkPath = vim.fn.exepath('flutter'):gsub("/bin/[^/]+$", ""),                  -- ensure this is correct
         program = "${workspaceFolder}/lib/main.dart",                                        -- ensure this is correct
         cwd = "${workspaceFolder}",
-    }
+    } ]]
 }
