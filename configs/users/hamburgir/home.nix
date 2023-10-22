@@ -4,6 +4,7 @@
 		./files.nix
 		./hamburgir.d/hypr
 		./keybinds.nix
+		./miscellaneous.nix
 		./packages.nix
 		./theme.nix
 		./xdg.nix

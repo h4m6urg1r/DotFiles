@@ -13,9 +13,6 @@
             package = pkgs.gnome.gnome-themes-extra;
             name = "Adwaita-dark";
         };
-        gtk3.bookmarks = [
-            "file:///tmp"
-        ];
     };
 
     # home.pointerCursor = {
