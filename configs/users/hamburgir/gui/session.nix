@@ -32,7 +32,7 @@
 	wayland.windowManager.hyprland = {
 		enable = true;
 		# extraConfig = config.hyprland.config.file;
-		extraConfig = (builtins.readFile ../../hamburgir.d/hypr/hyprland.conf);
+		extraConfig = (builtins.readFile ../hamburgir.d/hypr/hyprland.conf);
 		plugins = [
 			# inputs.hy3.packages.x86_64-linux.hy3
 		];

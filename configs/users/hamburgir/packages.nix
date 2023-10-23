@@ -11,10 +11,10 @@
         (nerdfonts.override{fonts=["Mononoki"];})
     ];
 
-    imports = [
-        #hyprland.homeManagerModules.default
-        ./packages.d
-    ];
+    # imports = [
+    #     #hyprland.homeManagerModules.default
+    #     ./packages.d
+    # ];
     nixpkgs.overlays = [
         inputs.eww.overlays.default
         inputs.rust-overlay.overlays.default

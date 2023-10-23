@@ -2,10 +2,12 @@
 	imports = [
 		./environment.nix
 		./files.nix
+		./gui
 		./hamburgir.d/hypr
 		./keybinds.nix
 		./miscellaneous.nix
 		./packages.nix
+		./shell
 		./theme.nix
 		./xdg.nix
 	];
