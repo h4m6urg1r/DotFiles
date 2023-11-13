@@ -25,8 +25,56 @@
 	wayland.windowManager.sway = {
 		enable = true;
 		config = {
-			modifier = "Mod4";
 			terminal = "wezterm";
+			assigns = {
+				"2" = [{ app_id = "^firefox$"; }];
+				"4" = [{ app_id = "^discord$"; }];
+			};
+			floating.criteria = [
+				{
+					title = "^Picture-in-Picture$";
+					app_id = "^firefox$";
+				}
+				{
+					title = "[Ee]xtension.*[Tt]ree\\s[Ss]tyle\\s[Tt]ab.*[Cc]lose\\s[Tt]abs";
+					app_id = "^firefox$";
+				}
+			];
+			window.commands = [
+				{
+					criteria = {
+						app_id = "^pavucontrol$";
+					};
+					command = "move window to scratchpad";
+				}
+				{
+					criteria = {
+						title = "^Picture-in-Picture$";
+						app_id = "^firefox$";
+					};
+					command = "sticky enable";
+				}
+			];
+			modifier = "Mod4";
+			input = {
+				"type:touchpad" = {
+					tap = "enabled";
+					drag = "enabled";
+					drag_lock = "enabled";
+					middle_emulation = "enabled";
+				};
+			};
+			startup = [
+				{ command = "discord"; }
+				{ command = "pavucontrol"; }
+				# { command = ""; }
+				{ command = "$(home-manager generations | head -1 | awk '{print $7 \"/specialisation/wayland\"}')"; }
+			];
+			output = {
+				eDP-1 = {
+					bg = "~/repo/wallpapers/1682160.jpg fill";
+				};
+			};
 		};
 	};
 	wayland.windowManager.hyprland = {
