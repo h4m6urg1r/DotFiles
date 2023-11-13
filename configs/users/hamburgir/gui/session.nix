@@ -25,6 +25,7 @@
 	wayland.windowManager.sway = {
 		enable = true;
 		config = {
+			menu = "rofi -show drun";
 			terminal = "wezterm";
 			assigns = {
 				"2" = [{ app_id = "^firefox$"; }];
