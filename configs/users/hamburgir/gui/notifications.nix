@@ -12,9 +12,9 @@ recursiveMerge = attrList:
         );
     in f [] attrList;
 in let
-        stolen = import ../hamburgir.d/dunst/dunstrc_end-4_dots-hyprland.nix;
-        custom = import ../hamburgir.d/dunst/dunstrc.nix;
-        theme = import ../hamburgir.d/dunst/catppuccinMocha.nix;
+        stolen = import ./dunst/dunstrc_end-4_dots-hyprland.nix;
+        custom = import ./dunst/dunstrc.nix;
+        theme = import ./dunst/catppuccinMocha.nix;
         mergedConf = recursiveMerge [ stolen custom theme ];
 in {
     services = {
