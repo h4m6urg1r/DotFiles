@@ -1,5 +1,6 @@
 { pkgs, ... }: {
-    home.packages = with pkgs; [
-        swww
-    ];
+	home.packages = with pkgs; [
+		helvum
+		swww
+	];
 }
