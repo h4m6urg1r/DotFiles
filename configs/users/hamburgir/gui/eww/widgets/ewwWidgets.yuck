@@ -1,0 +1,106 @@
+(include "ewwVariables.yuck")
+(include "./widgets/network/eww.yuck")
+(include "./widgets/miscellaneous/eww.yuck")
+(include "./widgets/windowManager/eww.yuck")
+(include "./widgets/extra/eww.yuck")
+
+(defwidget background []
+	(box
+		(image
+			:path "${wallpaper}"
+			:image-width 1920
+			:image-height 1080
+		)
+	)
+)
+
+(defwidget bar-sway [ ?orientation ]
+	(box
+		:orientation "${orientation?:"h"}"
+		:class "Bar"
+		(barLeft-sway)
+		(barMiddle-sway)
+		(barRight-sway)
+	)
+)
+
+(defwidget barLeft-sway [ ?orientation ]
+	(box
+		:orientation "${orientation?:"h"}"
+		:class "BarLeft"
+		:space-evenly false
+		:halign "start"
+		(applauncher)
+		(workspaces-sway)
+		;; (label :justify "left"
+		;;        :text "left side of the bar")
+	)
+)
+
+(defwidget barMiddle-sway [ ?orientation ]
+	(box
+		:orientation "${orientation?:"h"}"
+		:class "BarMiddle"
+		:halign "center"
+		;; (windowTitle :class "BarMiddle")
+		musicVisual
+	)
+)
+
+(defwidget barRight-sway [ ?orientation ]
+	(box
+		:orientation "${orientation?:"h"}"
+		:class "BarRight"
+		:space-evenly false
+		:halign "end"
+		(timeWidget :format '%H:%M %P')
+		(bluetoothButton)
+		(systray)
+		;; (label :justify "left"
+		;;        :text "right side of the bar")
+	)
+)
+
+(defwidget bar-hyprland [ ?orientation ]
+	(box
+		:orientation "${orientation?:"h"}"
+		:class "Bar"
+		(barLeft-hyprland)
+		(barMiddle-hyprland)
+		(barRight-hyprland)
+	)
+)
+
+(defwidget barLeft-hyprland [ ?orientation ]
+	(box
+		:orientation "${orientation?:"h"}"
+		:class "BarLeft"
+		:space-evenly false
+		:halign "start"
+		(workspaces-hyprland)
+		;; (label :justify "left"
+		;;        :text "left side of the bar")
+	)
+)
+(defwidget barMiddle-hyprland [ ?orientation ]
+	(box
+		:orientation "${orientation?:"h"}"
+		:class "BarMiddle"
+		:halign "center"
+		(windowTitle :class "BarMiddle")
+	)
+)
+(defwidget barRight-hyprland [ ?orientation ]
+	(box
+		:orientation "${orientation?:"h"}"
+		:class "BarRight"
+		:space-evenly false
+		:halign "end"
+		(timeWidget :format '%H:%M %P')
+		musicVisual
+		(bluetoothButton)
+		(systray)
+		;; (label :justify "left"
+		;;        :text "right side of the bar")
+	)
+)

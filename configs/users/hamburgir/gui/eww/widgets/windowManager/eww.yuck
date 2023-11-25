@@ -1,0 +1,61 @@
+;; (include "./widgets/windowManager/windowTitle.yuck")
+
+(deflisten _windowTitle :initial "" ;;"/bin/sh ~/.config/eww/scripts/get-window-title")
+ `hyprctl activewindow -j | jq --raw-output .title | sed "s/null//" && socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | stdbuf -o0 awk -F '>>|,' '/^activewindow>>/{print $3}'`)
+(defwidget windowTitle [ ?orientation ]
+    (box 
+        (label :class "WindowTitle"
+               :limit-width 50
+               :wrap false
+               :truncate-left false
+               ;; :hexpand true
+               :text "${_windowTitle}")))
+
+(deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
+(deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
+(defwidget workspaces-hyprland []
+	(eventbox
+		:onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}"
+		:class "workspaces-widget"
+		(box
+			:space-evenly true
+			(label :text "${workspaces}${current_workspace}" :visible false)
+			(for workspace in workspaces
+				(eventbox
+					:onclick "hyprctl dispatch workspace ${workspace.id}"
+					(box
+						:class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
+						(label
+							:text "${workspace.id}"
+						)
+					)
+				)
+			)
+		)
+	)
+)
+
+;; TODO: check saymsg -t get_tree -r. Use swaymsg subscribe window and workspace
+;; (deflisten _windowTitle)
+
+(deflisten sway-workspace :initial "[]" "swaymsg -t get_workspaces -r | jq --compact-output && swaymsg -t subscribe -m '[\"workspace\"]' | while read -r line; do swaymsg -t get_workspaces -r | jq --compact-output; done")
+(defwidget workspaces-sway []
+	(eventbox
+		:onscroll "echo \"{}\" | sed 's|up|next|; s|down|prev|' | xargs swaymsg workspace"
+		:class "workspace-widget"
+		(box
+			:space-evenly true
+			(for workspace in sway-workspace
+				(eventbox
+					:onclick "notify-send clicked ${workspace.num}"
+					(box
+						:class "workspace-entry ${workspace.focused? "current" : ""}"
+						(label
+							:text "${workspace.name} "
+						)
+					)
+				)
+			)
+		)
+	)
+)
