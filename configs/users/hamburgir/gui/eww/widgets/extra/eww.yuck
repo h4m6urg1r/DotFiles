@@ -1,26 +1,6 @@
-(defwidget seperator [ ?text ?orientation ]
-  (box :orientation "${orientation?:"h"}"
-       :space-evenly true
-    (label :text ""
-           :hexpand "true")
-    (label :text "${text}")
-    (label :text ""
-           :hexpand "true")
-    )
-)
-
-(defvar launcherWidth 25)
-;; (defvar launcherTimeout 120000)
-(defwidget applauncher [ ?class ?orientation ]
-	(box
-		:class "LauncherIcon$class"
-		:orientation "${orientation?:"h"}"
-		:space-evenly true
-		:width launcherWidth
-		(button
-			:onclick launcherCmd
-			;; :timeout launcherTimeout
-			launcherIcon
-		)
-	)
-)
+(include "./widgets/extra/time.yuck")
+(include "./widgets/extra/music.yuck")
+(include "./widgets/extra/battery.yuck")
+(include "./widgets/extra/reload.yuck")
+(include "./widgets/extra/applauncher.yuck")
+(include "./widgets/extra/seperator.yuck")

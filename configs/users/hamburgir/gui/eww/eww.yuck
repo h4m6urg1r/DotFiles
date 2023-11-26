@@ -1,4 +1,4 @@
-(include "./widgets/ewwWidgets.yuck")
+(include "./widgets/eww.yuck")
 (defwindow testing-wl
   :monitor 0
   :geometry (geometry :anchor "top center")

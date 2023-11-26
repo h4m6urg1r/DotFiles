@@ -1,0 +1,20 @@
+(defwidget time [ ?class ?orientation ?format ]
+	(box
+		:orientation "${orientation?:"h"}"
+		;; :tooltip "${formattime(EWW_TIME, '%r %v')}"
+		"${formattime(EWW_TIME, format)}"
+	)
+)
+(defwidget timeWidget [ ?orientation ?format ]
+	(button
+		:class "TimeWidget"
+		(box
+			:orientation "${orientation?:"h"}"
+			:tooltip "${formattime(EWW_TIME, '%r %v')}"
+			:space-evenly false
+			(time :class 'hour' :format '%H')
+			(label :class 'colon' :text ':')
+			(time :class 'minutes' :format '%M')
+		)
+	)
+)

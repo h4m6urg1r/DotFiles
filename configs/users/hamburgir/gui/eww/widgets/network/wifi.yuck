@@ -1,23 +1,25 @@
 (defwidget wifiIcon [orientation ?class]
-  (box :class "${class}WifiIcon"
-       :tooltip "Wi-Fi: ${wifiName?:'Disconnected'}"
-    wifiButtonSymbol))
+	(box :class "wifiIcon${class}"
+		:tooltip "Wi-Fi: ${wifiName?:'Disconnected'}"
+		wifiButtonSymbol
+	)
+)
 
 (defwidget wifiButton [orientation ?class]
-  (button :class "${class}WifiButton"
-    (box :orientation "${orientation}"
-         :tooltip "Wi-Fi: ${wifiName?:'Disconnected'}"
-      wifiButtonSymbol)))
-
-(defwidget toggleWifiButton [orientation ?class]
-  (button :class "${class}ToggleWifiButton"
-    (box :orientation "${orientation}"
-         :tooltip "Turn wifi ${isWifiOn? 'off' : 'on'}"
-      toggleWifiButtonSymbol)))
+	(button :class "wifiButton${class}"
+		(box :orientation "${orientation}"
+			:tooltip "Wi-Fi: ${wifiName?:'Disconnected'}"
+			wifiButtonSymbol
+		)
+	)
+)
 
 (defwidget showAvailableAPButton [orientation ?class]
-  (button :class  "${class}ShowAvailableWifiButton"
-          :onclick "${EWW_CMD} update showWifiConnectionsTab=true"
-    (box :orientation orientation
-      dropdownButtonSymbol)))
+	(button :class  "showAvailableAPButton${class}"
+			:onclick "${EWW_CMD} update showWifiConnectionsTab=true"
+		(box :orientation orientation
+		dropdownButtonSymbol
+		)
+	)
+)
 

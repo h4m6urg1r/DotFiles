@@ -1,0 +1,16 @@
+;; (defvar launcherWidth 25)
+;; (defvar launcherTimeout 120000)
+(defwidget applauncher [ ?class ?orientation ]
+	(button
+		:onclick launcherCmd
+		:tooltip "Launch AppMenu"
+		(box
+			:class "LauncherIcon${class}"
+			:orientation "${orientation?:"h"}"
+			:space-evenly true
+			;; :width launcherWidth
+			;; :timeout launcherTimeout
+			launcherIcon
+		)
+	)
+)

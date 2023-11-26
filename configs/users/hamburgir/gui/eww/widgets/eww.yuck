@@ -1,6 +1,6 @@
 (include "ewwVariables.yuck")
 (include "./widgets/network/eww.yuck")
-(include "./widgets/miscellaneous/eww.yuck")
+(include "./widgets/extra/eww.yuck")
 (include "./widgets/windowManager/eww.yuck")
 (include "./widgets/extra/eww.yuck")
 
@@ -56,6 +56,7 @@
 		(timeWidget :format '%H:%M %P')
 		(bluetoothButton)
 		(systray)
+		(reloadEWW)
 		;; (label :justify "left"
 		;;        :text "right side of the bar")
 	)

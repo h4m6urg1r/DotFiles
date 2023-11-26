@@ -1,0 +1,13 @@
+(defwidget reloadEWW [ ?class ?orientation ]
+	(button
+		:onclick "${EWW_CMD} reload"
+		:tooltip "Reload eww"
+		(box
+			:class "reloadEWW${class}"
+			:orientation "${orientation?:"h"}"
+			:space-evenly true
+			;; :timeout launcherTimeout
+			"󰑓"
+		)
+	)
+)

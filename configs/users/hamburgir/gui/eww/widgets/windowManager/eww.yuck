@@ -41,18 +41,16 @@
 (deflisten sway-workspace :initial "[]" "swaymsg -t get_workspaces -r | jq --compact-output && swaymsg -t subscribe -m '[\"workspace\"]' | while read -r line; do swaymsg -t get_workspaces -r | jq --compact-output; done")
 (defwidget workspaces-sway []
 	(eventbox
-		:onscroll "echo \"{}\" | sed 's|up|next|; s|down|prev|' | xargs swaymsg workspace"
-		:class "workspace-widget"
+		:onscroll "echo \"{}\" | sed 's|up|prev|; s|down|next|' | xargs swaymsg workspace"
 		(box
+			:class "workspaceWidget"
 			:space-evenly true
 			(for workspace in sway-workspace
-				(eventbox
-					:onclick "notify-send clicked ${workspace.num}"
-					(box
-						:class "workspace-entry ${workspace.focused? "current" : ""}"
-						(label
-							:text "${workspace.name} "
-						)
+				(button
+					:class "workspace-entry-${workspace.focused? "current" : ""}"
+					:onclick "swaymsg workspace ${workspace.num}"
+					(label
+						:text "${workspace.name} "
 					)
 				)
 			)

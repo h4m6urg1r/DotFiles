@@ -1,0 +1,10 @@
+(defwidget seperator [ ?text ?orientation ]
+  (box :orientation "${orientation?:"h"}"
+       :space-evenly true
+    (label :text ""
+           :hexpand "true")
+    (label :text "${text}")
+    (label :text ""
+           :hexpand "true")
+    )
+)

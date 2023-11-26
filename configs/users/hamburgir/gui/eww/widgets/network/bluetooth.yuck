@@ -1,5 +1,8 @@
 (defwidget bluetoothButton [ ?orientation ?class ]
-  (box :orientation {orientation?:"h"}
-    (button :class "${class}BluetoothButton"
-      'placeholder')))
+	(button
+		:class "${class}BluetoothButton"
+		:tooltip "hi"
+		bluetoothButtonSymbol
+	)
+)
 

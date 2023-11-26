@@ -39,16 +39,69 @@ $crust: #11111b;
     border-radius: .5rem;
 }
 
+.LauncherIcon {
+	min-height: 27px;
+	min-width: 27px;
+}
+
 .Bar {
+	color: $text;
+	padding-left: 5px;
+	padding-right: 5px;
     margin: .3rem;
     margin-bottom: 0;
     background: $base;
+	font-size: 1.3rem;
+}
+
+.workspaceWidget {
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .WindowTitle {
     color: $red;
 }
 
+.BluetoothButton {
+	min-width: 27px;
+	min-height: 27px;
+}
+
 .clock-hour {
-    
+    // width: 0;
+}
+
+.reloadEWW {
+	min-width: 27px;
+	min-height: 27px;
+}
+
+tooltip {
+	background: $surface0;
+	border: 2px solid $mantle;
+	border-radius: 8px;
+	color: $subtext1;
+
+	label {
+		font-size: 1.1rem;
+	}
+}
+
+menu {
+	background: $mantle;
+	padding: 10px;
+	font-size: 1.12rem;
+}
+
+menu > menuitem {
+	border-radius: 0px;
+}
+
+menu > menuitem:hover {
+	background: $base;
+}
+
+menu > menuitem:disabled {
+	color: $surface0;
 }
