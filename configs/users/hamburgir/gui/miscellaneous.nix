@@ -17,11 +17,11 @@
 			# packages to add to gjs's runtime
 			extraPackages = [ pkgs.libsoup_3 ];
 		};
-		# eww = {
-		# 	enable = true;
-		# 	configDir = ./eww;
-		# 	package = pkgs.eww-wayland;
-		# };
+		eww = {
+			enable = true;
+			configDir = ./eww;
+			package = pkgs.eww-wayland;
+		};
 	};
 	home.packages = with pkgs; [
 		helvum
