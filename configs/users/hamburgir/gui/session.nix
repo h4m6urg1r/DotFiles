@@ -136,6 +136,11 @@
 					command = "sticky enable";
 				}
 			];
+			gaps = {
+				smartGaps = true;
+				inner = 5;
+				# outer = 5;
+			};
 			modifier = "Mod4";
 			input = {
 				"type:touchpad" = {
@@ -158,6 +163,9 @@
 			};
 			workspaceAutoBackAndForth = true;
 		};
+		extraConfig = ''
+		corner_radius 10
+		'';
 	};
 	wayland.windowManager.hyprland = {
 		enable = true;
