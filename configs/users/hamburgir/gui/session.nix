@@ -24,6 +24,7 @@
 
 	wayland.windowManager.sway = {
 		enable = true;
+		package = pkgs.swayfx;
 		config = {
 			menu = "rofi -show drun";
 			terminal = "wezterm";
