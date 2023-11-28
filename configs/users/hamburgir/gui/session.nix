@@ -156,6 +156,7 @@
 					bg = "~/repo/wallpapers/1682160.jpg fill";
 				};
 			};
+			workspaceAutoBackAndForth = true;
 		};
 	};
 	wayland.windowManager.hyprland = {
