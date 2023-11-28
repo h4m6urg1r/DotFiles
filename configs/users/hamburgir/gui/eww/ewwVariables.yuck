@@ -9,6 +9,11 @@
 (defvar isWifiOn true)
 (defvar isBluetoothOn true)
 
+(deflisten bluetooth
+	:initial "{}"
+	`./scripts/bluetooth.sh`
+)
+
 (defvar wifiButtonSymbol "🌐")
 (defvar dropdownButtonSymbol "▼")
 

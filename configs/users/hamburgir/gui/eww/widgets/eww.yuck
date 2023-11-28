@@ -17,7 +17,7 @@
 (defwidget bar-sway [ ?orientation ]
 	(box
 		:orientation "${orientation?:"h"}"
-		:class "Bar"
+		:class "Bar${jq(sway-workspace, '.[] | select(.focused == true) | .focus | length')>1?"":"Flushed"}"
 		(barLeft-sway)
 		(barMiddle-sway)
 		(barRight-sway)

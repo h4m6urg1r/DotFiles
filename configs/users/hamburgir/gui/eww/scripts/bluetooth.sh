@@ -42,7 +42,7 @@ status() {
 				color="#45475a"
 		fi
 
-		echo '{ "icon": "'"$icon"'", "batt_icon": "'"$batt_icon"'", "text": "'"$text"'", "color": "'"$color"'", "tooltip": "" }'
+		echo "{ \"icon\": \"$icon\", \"batt_icon\": \"$batt_icon\", \"text\": \"$text\", \"color\": \"$color\", \"tooltip\": \"\" }"
 
 		sleep 3
 	done
