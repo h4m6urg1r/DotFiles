@@ -16,6 +16,7 @@
 
 		grub2-themes.url = "github:vinceliuice/grub2-themes";
 
+		ags.url = "github:Aylur/ags";
 		hyprland.url = "github:hyprwm/Hyprland";
 		# hy3 = {
 		#     url = "github:outfoxxed/hy3";
