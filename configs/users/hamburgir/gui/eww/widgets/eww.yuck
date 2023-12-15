@@ -54,8 +54,8 @@
 		:space-evenly false
 		:halign "end"
 		(timeWidget :format '%H:%M %P')
-		(bluetoothButton)
-		(systray)
+		(controlPanel)
+		;; (systray)
 		(reloadEWW)
 		;; (label :justify "left"
 		;;        :text "right side of the bar")

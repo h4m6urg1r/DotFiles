@@ -4,3 +4,5 @@
 (include "./widgets/extra/reload.yuck")
 (include "./widgets/extra/applauncher.yuck")
 (include "./widgets/extra/seperator.yuck")
+(include "./widgets/extra/controlPanel.yuck")
+(include "./widgets/extra/audio.yuck")

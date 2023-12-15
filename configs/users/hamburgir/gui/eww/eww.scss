@@ -74,8 +74,6 @@ $crust: #11111b;
 	color: $red;
 }
 
-.workspaceWidget
-
 .WindowTitle {
     color: $red;
 }
@@ -85,8 +83,10 @@ $crust: #11111b;
 	min-height: 27px;
 }
 
-.clock-hour {
+.TimeWidget {
     // width: 0;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .reloadEWW {

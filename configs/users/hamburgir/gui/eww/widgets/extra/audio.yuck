@@ -1,0 +1,7 @@
+(defwidget microphoneIcon [ ?class ?orientation ]
+	(eventbox
+		:onscroll "echo \"{}\" | sed 's|up|--decrease ${inpVolumeTH}|; s|down|--increase ${inpVolumeTH}|' | xargs pamixer "
+		:tooltip "${`pamixer --get-mute`? "Microphone Muted" : "`pamixer --get-volume-human` Microphone Volume" }"
+		"${`pamixer --get-mute`}eh"
+	)
+)
