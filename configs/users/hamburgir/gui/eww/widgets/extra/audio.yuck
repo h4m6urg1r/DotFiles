@@ -1,7 +1,19 @@
 (defwidget microphoneIcon [ ?class ?orientation ]
 	(eventbox
-		:onscroll "echo \"{}\" | sed 's|up|--decrease ${inpVolumeTH}|; s|down|--increase ${inpVolumeTH}|' | xargs pamixer "
-		:tooltip "${`pamixer --get-mute`? "Microphone Muted" : "`pamixer --get-volume-human` Microphone Volume" }"
-		"${`pamixer --get-mute`}eh"
+		:onscroll "echo \"{}\" | sed 's|down|-l -p ${inpVolumeTH}|; s|up|-r -p ${inpVolumeTH}|' | xargs /home/hamburgir/newNixos/configs/users/hamburgir/gui/eww/scripts/volume -s"
+		(box
+			:tooltip "${micStat.volume}% Microphone Volume"
+			"${micStat.mute? "󰍭" : "󰍬"}"
+		)
+	)
+)
+
+(defwidget speakerIcon [ ?class ?orientation ]
+	(eventbox
+		:onscroll "echo \"{}\" | sed 's|down|-l -p ${inpVolumeTH}|; s|up|-r -p ${inpVolumeTH}|' | xargs /home/hamburgir/newNixos/configs/users/hamburgir/gui/eww/scripts/volume"
+		(box
+			:tooltip "${micStat.mute? "Microphone Muted" : "${micStat.volume}% Microphone Volume" }"
+			"${volStat.mute? "󰝟" : "${volStat.volume<33? "󰕿" : "${volStat.volume<66? "󰖀" : "󰕾"}"}"}"
+		)
 	)
 )

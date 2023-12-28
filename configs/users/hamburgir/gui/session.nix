@@ -99,7 +99,8 @@
 
 				"${cfg.modifier}+r" = "mode resize";
 
-				"Print" = "exec ${pkgs.grim}/bin/grim";
+				"Print" = "exec ${pkgs.grim}/bin/grim - | ${pkgs.swappy}/bin/swappy -f -";
+				"Shift+Print" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.swappy}/bin/swappy -f -";
 
 				"XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 1%+";
 				"XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 1%-";
@@ -127,6 +128,13 @@
 						app_id = "^pavucontrol$";
 					};
 					command = "move window to scratchpad";
+				}
+				{
+					criteria = {
+						title = "^Open File$";
+						app_id = "^firefox$";
+					};
+					command = "sticky enable";
 				}
 				{
 					criteria = {
@@ -160,7 +168,7 @@
 			];
 			output = {
 				eDP-1 = {
-					bg = "./background.jpg";
+					bg = "~/.config/background.jpg fill";
 				};
 			};
 			workspaceAutoBackAndForth = true;

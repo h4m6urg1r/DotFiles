@@ -8,9 +8,9 @@
 
   # Enable networking
   networking.firewall = {
-    enable = true;
+    enable = false;
     allowPing = true;
-    allowedTCPPorts = [ 5900 ];
+    allowedTCPPorts = [ 5900 8080 25575 ];
   };
   networking.networkmanager.enable = true;
 

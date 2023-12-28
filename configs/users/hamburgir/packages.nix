@@ -1,6 +1,10 @@
 { inputs, config, pkgs, ... }: {
     home.packages = with pkgs; [
-        discord
+        (discord.override {
+			withOpenASAR = true;
+			withVencord = true;
+			withTTS = true;
+		})
         ranger
         firefox
         tmux
@@ -34,9 +38,6 @@
             };
         };
         bashmount = {
-            enable = true;
-        };
-        bat = {
             enable = true;
         };
         broot = {

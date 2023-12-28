@@ -6,7 +6,7 @@
 		inputs.xremap
 	];
 	services.xremap = {
-		withHypr = true;
+		withWlroots = true;
 		config = {
 			keymap = [
 				{

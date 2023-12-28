@@ -14,6 +14,14 @@
 		home-manager.url = "github:nix-community/home-manager";# release-23.05
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+		catppuccin-sddm = {
+			url = "github:catppuccin/sddm";
+			flake = false;
+		};
+		catppuccin-bat = {
+			url = "github:catppuccin/bat";
+			flake = false;
+		};
 		grub2-themes.url = "github:vinceliuice/grub2-themes";
 
 		ags.url = "github:Aylur/ags";
@@ -24,7 +32,8 @@
 		# };
 
 		webcord.url = "github:fufexan/webcord-flake";
-		eww.url = "git+file:///home/hamburgir/repo/eww";
+		eww.url = "github:elkowar/eww";
+		# eww.url = "git+file:///home/hamburgir/repo/eww";
 		rust-overlay.url = "github:oxalica/rust-overlay";
 
 		xremap.url = "github:xremap/nix-flake";
@@ -32,6 +41,11 @@
 		# Shameless plug: looking for a way to nixify your themes and make
 		# everything match nicely? Try nix-colors!
 		# nix-colors.url = "github:misterio77/nix-colors";
+
+		wallpaper = {
+			url =  "https://raw.githubusercontent.com/uday-sudo/wallpapers/main/1506250.jpg";
+			flake = false;
+		};
 	};
 
 	outputs = { self, nixpkgs, home-manager, ... }@inputs:

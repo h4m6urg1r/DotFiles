@@ -24,6 +24,11 @@
         source = ./hamburgir.d/wezterm;
         target = ".config/wezterm";
     };
+	
+	home.file."backgroundImg" = {
+		source = ./gui/background.jpg;
+		target = ".config/background.jpg";
+	};
 
     # home.file."i3" = {
     #     source = ./hamburgir.d/i3;

@@ -20,7 +20,11 @@
 		eww = {
 			enable = true;
 			configDir = ./eww;
-			package = pkgs.eww-wayland;
+			# package = pkgs.eww-wayland;
+			package = (pkgs.writeShellScriptBin "eww" ''
+			[[ "$1" -eq "daemon" ]] && echo "${pkgs.eww-wayland}/bin/eww" > /tmp/eww.cmd
+			${pkgs.eww-wayland}/bin/eww "$@"
+			'');
 		};
 	};
 	home.packages = with pkgs; [
