@@ -85,7 +85,7 @@ in {
 
 	programs.sway.enable = true;
 
-	environment.systemPackages = [ 
+	environment.systemPackages = [
 		catppuccin-sddm
 	];
 	services.xserver.displayManager = {
@@ -111,8 +111,11 @@ in {
 	xdg.portal = {
 		enable = true;
 		extraPortals = with pkgs; [
+			xdg-desktop-portal-wlr
 			xdg-desktop-portal-gtk
+			xdg-desktop-portal-hyprland
 		];
+		# gtkUsePortal=true;
 	};
 
 	security.polkit.enable = true;
