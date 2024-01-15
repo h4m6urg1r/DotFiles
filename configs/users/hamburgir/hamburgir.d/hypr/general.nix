@@ -1,7 +1,7 @@
 { config, ... }: {
     wayland.windowManager.hyprland.extraConfig = ''
         exec-once = eww open-many topbar & swww init
-        exec = swww query && swww img /home/hamburgir/repo/wallpapers/1506250.jpg
+        exec = swww query && swww img ${config.home.homeDirectory}/.config/background.jpg
         general {
             gaps_in = ${ builtins.toString config.wm.theme.windowGaps }
             gaps_out = ${ builtins.toString config.wm.theme.outerGaps }
