@@ -1,6 +1,10 @@
 { pkgs, ... }: {
 	xdg.configFile."lf/icons".source = ./lf-icons;
 
+	home.packages = with pkgs; [
+		yazi
+	];
+
 	programs = {
 		nnn = {
 			enable = true;
