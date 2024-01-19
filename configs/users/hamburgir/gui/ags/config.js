@@ -1,55 +1,23 @@
-// Import
-import { App, Utils } from './imports.js';
-import { firstRunWelcome } from './lib/files.js';
-// Windows
-import Bar from './windows/bar/main.js';
-import Cheatsheet from './windows/cheatsheet/main.js';
-import DesktopBackground from './windows/desktopbackground/main.js';
-import Dock from './windows/dock/main.js';
-import { CornerTopleft, CornerTopright, CornerBottomleft, CornerBottomright } from './windows/screencorners/main.js';
-import Indicator from './windows/indicators/main.js';
-import Osk from './windows/onscreenkeyboard/main.js';
-import Overview from './windows/overview/main.js';
-import Session from './windows/session/main.js';
-import SideRight from './windows/sideright/main.js';
+import { readFile } from 'resource:///com/github/Aylur/ags/utils.js';
+import App from 'resource:///com/github/Aylur/ags/app.js';
+import GLib from 'gi://GLib';
+const pkgjson = JSON.parse(readFile(App.configDir + '/package.json'));
 
-// Longer than actual anim time (150, see styles) to make sure windows animate fully
-const CLOSE_ANIM_TIME = 200;
+const SKIP_CHECK = 'AGS_SKIP_V_CHECK';
 
-// Init cache and check first run
-Utils.exec(`bash -c 'mkdir -p ~/.cache/ags/user'`);
-firstRunWelcome();
-
-// SCSS compilation
-Utils.exec(`bash -c 'echo "" > ${App.configDir}/scss/_musicwal.scss'`); // reset music styles
-Utils.exec(`bash -c 'echo "" > ${App.configDir}/scss/_musicmaterial.scss'`); // reset music styles
-Utils.exec(`sassc ${App.configDir}/scss/main.scss ${App.configDir}/style.css`);
-App.resetCss();
-App.applyCss(`${App.configDir}/style.css`);
-
-// Config object
-export default {
-    css: `${App.configDir}/style.css`,
-    stackTraceOnError: true,
-    closeWindowDelay: { // For animations
-        'sideright': CLOSE_ANIM_TIME,
-        'sideleft': CLOSE_ANIM_TIME,
-        'osk': CLOSE_ANIM_TIME,
-    },
-    windows: [
-        Bar(),
-        CornerTopleft(),
-        CornerTopright(),
-        CornerBottomleft(),
-        CornerBottomright(),
-        DesktopBackground(),
-        Dock(),
-        Overview(),
-        Indicator(),
-        Cheatsheet(),
-        SideRight(),
-        Osk(), // On-screen keyboard
-        Session(), // Power menu, if that's what you like to call it
-    ],
+const v = {
+    ags: `v${pkg.version}`,
+    expected: `v${pkgjson.version}`,
+    check: !GLib.getenv(SKIP_CHECK),
 };
 
+function mismatch() {
+    print(`my config expects ${v.expected}, but your ags is ${v.ags}`);
+    print(`to skip the check run "${SKIP_CHECK}=true ags"`);
+    App.connect('config-parsed', app => app.Quit());
+    return {};
+}
+
+export default v.ags === v.expected || !v.check
+    ? (await import('./js/main.js')).default
+    : mismatch();

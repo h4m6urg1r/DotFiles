@@ -16,6 +16,10 @@
 
 			# packages to add to gjs's runtime
 			extraPackages = [ pkgs.libsoup_3 ];
+			extraPackages = with pkgs; [
+				libsoup_3
+				libgtop
+			];
 		};
 		eww = {
 			enable = true;
