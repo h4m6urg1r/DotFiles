@@ -3,7 +3,7 @@
 		./environment.nix
 		./files.nix
 		./gui
-		./hamburgir.d/hypr
+		# ./hamburgir.d/hypr
 		./keybinds.nix
 		./miscellaneous.nix
 		./packages.nix
@@ -39,7 +39,26 @@
 				};
 				keybinds = {
 					movement = {
-						
+						left = lib.mkOption {
+							default = [ "h" ];
+							type = lib.types.listOf lib.types.str;
+							description = "Keybind used for moving focus/windows to left";
+						};
+						right = lib.mkOption {
+							default = [ "l" ];
+							type = lib.types.listOf lib.types.str;
+							description = "Keybind used for moving focus/windows to right";
+						};
+						up = lib.mkOption {
+							default = [ "k" ];
+							type = lib.types.listOf lib.types.str;
+							description = "Keybind used for moving focus/windows to up";
+						};
+						down = lib.mkOption {
+							default = [ "j" ];
+							type = lib.types.listOf lib.types.str;
+							description = "Keybind used for moving focus/windows to down";
+						};
 					};
 				};
 			};
