@@ -1,19 +1,20 @@
 { inputs, config, pkgs, ... }: {
-    home.packages = with pkgs; [
-        (discord.override {
-			withOpenASAR = true;
-			withVencord = true;
-			withTTS = true;
-		})
-        ranger
-        firefox
-        tmux
-        mpv
-        zathura
-        variety
-        rnote
-        (nerdfonts.override{fonts=["Mononoki" "Iosevka"];})
-    ];
+		home.packages = with pkgs; [
+			(discord.override {
+				withOpenASAR = false;
+				withVencord = true;
+				withTTS = true;
+			})
+			webcord-vencord
+			ranger
+			firefox
+			tmux
+			mpv
+			zathura
+			variety
+			rnote
+			(nerdfonts.override{fonts=["Mononoki" "Iosevka"];})
+		];
 
     # imports = [
     #     #hyprland.homeManagerModules.default
@@ -50,9 +51,9 @@
         command-not-found = {
             enable = true;
         };
-        firefox = {
-            enable = true;
-        };
+        # firefox = {
+        #     enable = true;
+        # };
         #try havoc
         #try helix
         #htop
@@ -165,7 +166,7 @@
 					reverse = false;
 					fixed-height = true;
 					fixed-columns = true;
-					
+
 					spacing = mkLiteral "0px";
 					margin = mkLiteral "0px";
 					padding = mkLiteral "0px";
