@@ -24,19 +24,28 @@
 		};
 		grub2-themes.url = "github:vinceliuice/grub2-themes";
 
-		ags.url = "github:Aylur/ags";
 		hyprland.url = "github:hyprwm/Hyprland";
-		# hy3 = {
-		#     url = "github:outfoxxed/hy3";
-		#     inputs.hyprland.follows = "hyprland";
+		hy3 = {
+		    url = "github:outfoxxed/hy3";
+		    inputs.hyprland.follows = "hyprland";
+		};
+
+		nixvim = {
+			url = "github:nix-community/nixvim";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+		# my-nixvim = {
+		# 	url = "path:///home/hamburgir/repo/nixvim";
 		# };
 
 		webcord.url = "github:fufexan/webcord-flake";
-		eww.url = "github:elkowar/eww";
+
+		eww.url = "git+file:///home/hamburgir/repo/eww";
 		# eww.url = "git+file:///home/hamburgir/repo/eww";
 		rust-overlay.url = "github:oxalica/rust-overlay";
+		ags.url = "github:Aylur/ags";
 
-		xremap.url = "github:xremap/nix-flake";
+		# xremap.url = "github:xremap/nix-flake";
 
 		# Shameless plug: looking for a way to nixify your themes and make
 		# everything match nicely? Try nix-colors!
