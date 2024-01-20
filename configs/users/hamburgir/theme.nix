@@ -10,8 +10,15 @@
 			name = "Papirus-Dark";
 		};
 		theme = {
-			package = pkgs.gnome.gnome-themes-extra;
-			name = "Adwaita-dark";
+			# name = "Adwaita-dark";
+			# package = pkgs.gnome.gnome-themes-extra;
+			name = "Catppuccin-Mocha-Standard-Blue-Dark";
+			package = pkgs.catppuccin-gtk.override {
+				accents = [ "blue" ];
+				size = "standard";
+				tweaks = [ "rimless" ];
+				variant = "mocha";
+			};
 		};
 	};
 
