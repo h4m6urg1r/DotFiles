@@ -38,10 +38,10 @@ $crust: #11111b;
 	all: unset;
 }
 
-.LauncherIcon {
-	min-height: 27px;
-	min-width: 27px;
-}
+// .LauncherIcon {
+// 	min-height: 27px;
+// 	min-width: 27px;
+// }
 
 .BarFlushed {
 	color: $text;
@@ -64,18 +64,65 @@ $crust: #11111b;
 	border-radius: .5rem;
 }
 
-.workspaceWidget {
-	color: $blue;
-	padding-left: 5px;
-	padding-right: 5px;
+.LauncherIcon:hover {
+	// padding: 0rem .3rem;
+	color: $overlay2;
 }
 
-.workspace-entry-current {
+.LauncherIcon {
+	// padding: 0rem .3rem;
+	margin: .1rem;
+	padding-right: .5rem;
+}
+
+// .workspaceWidget {
+// 	color: $blue;
+// }
+//
+// .workspace-entry-current {
+// 	color: $red;
+// }
+
+.workspaces {
+	background: $surface0;
+	padding: 0rem .4rem;
+}
+
+.WS-ActiveOccupied {
+	color: $blue;
+	padding: 0rem .2rem;
+	// margin: .6rem .5rem;
+	// padding: .4rem .4rem;
+	// min-height: 0px;
+	// border-radius: 1rem;
+}
+
+.WS-ActiveUnoccupied {
+	color: $green;
+	padding: 0rem .2rem;
+}
+
+.WS-InactiveOccupied {
+	color: $pink;
+	padding: 0rem .2rem;
+}
+
+.WS-InactiveUnoccupied {
+	color: $overlay0;
+	padding: 0rem .2rem;
+}
+
+.WS-PB trough {
+	background-color: $mantle;
 	color: $red;
+	min-width: 10px;
+	padding: 0.5rem;
 }
 
 .WindowTitle {
-    color: $red;
+	background-color: $crust;
+	padding: 0rem .5rem;
+	border-radius: .5rem;
 }
 
 .BluetoothButton {
@@ -85,13 +132,25 @@ $crust: #11111b;
 
 .TimeWidget {
     // width: 0;
-	padding-left: 5px;
-	padding-right: 5px;
+	padding-left: .3rem;
+	padding-right: .3rem;
 }
 
-.reloadEWW {
-	min-width: 27px;
-	min-height: 27px;
+.radialBattery {
+	color: $blue;
+	min-height: 1.3rem;
+	min-width: 1.3rem;
+	font-size: 1rem;
+}
+
+.radBat {
+	color: $green;
+}
+
+.icon {
+	// aspect-ratio: 1/1;
+	min-width: 1.3rem;
+	min-height: 1.3rem;
 }
 
 tooltip {

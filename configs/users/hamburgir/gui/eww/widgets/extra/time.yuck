@@ -12,9 +12,10 @@
 			:orientation "${orientation?:"h"}"
 			:tooltip "${formattime(EWW_TIME, '%r %v')}"
 			:space-evenly false
-			(time :class 'hour' :format '%H')
-			(label :class 'colon' :text ':')
-			(time :class 'minutes' :format '%M')
+			;; (time :class 'hour' :format '%H')
+			;; (label :class 'colon' :text ':')
+			;; (time :class 'minutes' :format '%M')
+			"${formattime(EWW_TIME, format)}"
 		)
 	)
 )

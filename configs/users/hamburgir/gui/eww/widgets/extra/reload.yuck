@@ -7,7 +7,7 @@
 			:orientation "${orientation?:"h"}"
 			:space-evenly true
 			;; :timeout launcherTimeout
-			"󰑓"
+			(icon "󰑓")
 		)
 	)
 )

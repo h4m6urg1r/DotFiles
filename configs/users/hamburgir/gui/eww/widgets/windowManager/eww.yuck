@@ -2,6 +2,8 @@
 
 (deflisten _windowTitle :initial "" ;;"/bin/sh ~/.config/eww/scripts/get-window-title")
  `hyprctl activewindow -j | jq --raw-output .title | sed "s/null//" && socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | stdbuf -o0 awk -F '>>|,' '/^activewindow>>/{print $3}'`)
+(deflisten _windowClass :initial "" ;;"/bin/sh ~/.config/eww/scripts/get-window-title")
+ `hyprctl activewindow -j | jq --raw-output .class | sed "s/null//" && socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | stdbuf -o0 awk -F '>>|,' '/^activewindow>>/{print $2}'`)
 (defwidget windowTitle [ ?orientation ]
     (box 
         (label :class "WindowTitle"
@@ -9,31 +11,44 @@
                :wrap false
                :truncate-left false
                ;; :hexpand true
-               :text "${_windowTitle}")))
+               :text _windowClass
+			   :tooltip _windowTitle
+		)
+	)
+)
 
 (deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
 (deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
+(defvar prev_workspace "")
 (defwidget workspaces-hyprland []
 	(eventbox
 		:onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}"
-		:class "workspaces-widget"
 		(box
 			:space-evenly true
-			(label :text "${workspaces}${current_workspace}" :visible false)
+			:class "workspaces"
+			;; (label :text "${workspaces}${current_workspace}" :visible false)
 			(for workspace in workspaces
 				(eventbox
 					:onclick "hyprctl dispatch workspace ${workspace.id}"
 					(box
-						:class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
-						(label
-							:text "${workspace.id}"
-						)
+						:class "WS-${workspace.id == current_workspace ? "Active" : "Inactive"}${workspace.windows > 0 ? "Occupied" : "Unoccupied"}"
+						;; (label
+						;; 	:text "${workspace.id}"
+						;; )
+						(circular-progress :class "circle" :thickness 5 :start-at 75 :value 100)
+						;; (progress :class "WS-PB" :value 50)
+						;; ""
 					)
 				)
 			)
 		)
 	)
 )
+
+;; (deflisten workspaces :initial "[]" "bash ~/newNixos/configs/users/hamburgir/gui/eww/scripts/workspace")
+;; (defwidget workspaces-hyprland []
+;; 	(literal :content workspaces)
+;; )
 
 ;; TODO: check saymsg -t get_tree -r. Use swaymsg subscribe window and workspace
 ;; (deflisten _windowTitle)

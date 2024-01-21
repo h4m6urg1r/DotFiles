@@ -78,9 +78,9 @@
 		:class "BarLeft"
 		:space-evenly false
 		:halign "start"
+		(applauncher)
 		(workspaces-hyprland)
-		;; (label :justify "left"
-		;;        :text "left side of the bar")
+		(windowTitle :class "BarMiddle")
 	)
 )
 (defwidget barMiddle-hyprland [ ?orientation ]
@@ -88,7 +88,8 @@
 		:orientation "${orientation?:"h"}"
 		:class "BarMiddle"
 		:halign "center"
-		(windowTitle :class "BarMiddle")
+		(timeWidget :format '%I:%M %p')
+		;; (timeWidget :format '%H:%M')
 	)
 )
 (defwidget barRight-hyprland [ ?orientation ]
@@ -97,10 +98,7 @@
 		:class "BarRight"
 		:space-evenly false
 		:halign "end"
-		(timeWidget :format '%H:%M %P')
-		musicVisual
-		(bluetoothButton)
-		(systray)
+		(controlPanel)
 		;; (label :justify "left"
 		;;        :text "right side of the bar")
 	)

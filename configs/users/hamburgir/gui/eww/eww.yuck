@@ -12,7 +12,7 @@
     (radial-battery)
     ))
 
-(defwindow topbar
+(defwindow topbar-sway
   :monitor 0
   :geometry ( geometry :width "100%"
                        :anchor "top center")
@@ -23,6 +23,18 @@
   :class "top"
   (box
     (bar-sway :class "top")))
+
+(defwindow topbar-hyprland
+  :monitor 0
+  :geometry ( geometry :width "100%"
+                       :anchor "top center")
+  :stacking "fg"
+  :exclusive true
+  :namespace "topbar"
+  :wm-ignore true
+  :class "top"
+  (box
+    (bar-hyprland :class "top")))
 
 (defwindow background
   :monitor 0
