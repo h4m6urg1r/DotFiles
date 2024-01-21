@@ -3,8 +3,9 @@
 		vimCmd = (cmd: "<CMD>${cmd}<CR>");
 		lldr = (key: "<LocalLeader>${key}");
 		ldr = (key: "<Leader>${key}");
-		fgrp = (key: ldf "f${key}");
-		bgrp = (key: ldf "b${key}");
+		bgrp = (key: ldr "b${key}");
+		fgrp = (key: ldr "f${key}");
+		tgrp = (key: ldr "t${key}");
 	in [
 		{
 			action = "<Nop>";
@@ -14,6 +15,44 @@
 				silent = true;
 			};
 		}
+		# Buffers
+		{
+			action = vimCmd "bprevious";
+			key = bgrp "h";
+			mode = [ "n" ];
+			options = {
+				desc = "Cycle to previous buffer";
+				silent = true;
+			};
+		}
+		{
+			action = vimCmd "bnext";
+			key = bgrp "l";
+			mode = [ "n" ];
+			options = {
+				desc = "Cycle to next buffer";
+				silent = true;
+			};
+		}
+		{
+			action = vimCmd "edit";
+			key = bgrp "r";
+			mode = [ "n" ];
+			options = {
+				desc = "Reload current buffer";
+				silent = true;
+			};
+		}
+		{
+			action = vimCmd "edit!";
+			key = bgrp "R";
+			mode = [ "n" ];
+			options = {
+				desc = "Force reload current buffer";
+				silent = true;
+			};
+		}
+		# Files
 		{
 			action = "require('telescope.builtin').grep_string";
 			lua = true;
@@ -24,14 +63,41 @@
                 silent = true;
 			};
 		}
+		# Toggle
 		{
-			action = "";
+			action = vimCmd "noh";
+			key = tgrp "h";
+			mode = [ "n" ];
+			options = {
+				desc = "Toggle search highlight";
+				silent = true;
+			};
+		}
+		# Misc
+		{
+			action = vimCmd "edit <cfile>";
+			key = ldr "gf";
+			mode = [ "n" "v" ];
+			options = {
+				desc = "Open non existent file";
+				silent = true;
+			};
 		}
 	];
+
 	programs.nixvim.plugins.which-key = {
 		enable = true;
 		layout = {
 			align = "center";
+		};
+		operators = {
+			gc = "Comments";
+		};
+		registrations = {
+			"<Leader>;" = "Neovim";
+			"<Leader>/" = "+Lost Something?";
+			"<Leader>b" = "Buffers";
+			"<Leader>t" = "Toggle";
 		};
 	};
 }
