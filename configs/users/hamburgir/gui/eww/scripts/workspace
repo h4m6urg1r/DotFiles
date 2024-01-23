@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+
+ORIENTATION="v"
+# workspaceSymbols=(   )
+# workspaceSymbols=(   )
+#
+# activeWorkspace() {
+#     echo "$(xprop -root _NET_CURRENT_DESKTOP | sed 's/^.*= //')"
+# }
+#
+# isActive() {
+#     if [[ $1 -eq $(xprop -root _NET_CURRENT_DESKTOP | sed 's/^.*= //') ]]
+#     then
+#         echo 1
+#     else
+#         echo 0
+#     fi
+# }
+#
+# hasWindows() {
+#     if [[ $(wmctrl -l | sed 's/0x[[:alnum:]]*\s*\([-[:digit:]]*\)\s.*/\1/' | sed '/-/d') == *"$1"* ]]
+#     then
+#         echo 1
+#     else
+#         echo 0
+#     fi
+# }
+#
+# yuckTemplate() {
+#     # echo "(box :class \"$([[ $(isActive $1) -eq 1 ]] && echo "workspaceActive" || echo "workspaceInactive")\" :orientation \"$ORIENTATION\" (button :class \"$([[ $(hasWindows $1) -eq 1 ]] && echo "workspaceOccupied" || echo "workspaceUnoccupied")\" :onclick \"wmctrl -s $1\" \"$i\"))"
+#     echo "(button :class \"$([[ $(isActive $1) -eq 1 ]] && echo "Active" || echo "Inactive")$([[ $(hasWindows $1) -eq 1 ]] && echo "Occupied" || echo "Unoccupied")\" :width 5 :vexpand false :hexpand false :onclick \"wmctrl -s $1\" (box :class \"workspaceButtonBox\" \"$([[ ${workspaceSymbols[i]} ]] && echo "${workspaceSymbols[i]}" || expr $i + 1)\"))"
+# }
+#
+generateSingleButton() {
+    template=""
+	WORKSPACE_WINDOWS=$(hyprctl workspaces -j | jq 'map({key: .id | tostring, value: .windows}) | from_entries')
+	json=$(seq 1 10 | jq --argjson windows "${WORKSPACE_WINDOWS}" --slurp -Mc 'map(tostring) | map({id: ., windows: ($windows[.]//0)})')
+	active=$(hyprctl monitors -j | jq '.[] | select(.focused) | .activeWorkspace.id')
+    for ((i=0; i<10; i++))
+    do
+		id=$(echo "$json" | jq -r ".[$i].id")
+		windows=$(echo "$json" | jq -r ".[$i].windows")
+		# echo -n "(button :class \"WS-$([[ $id -eq $active ]] && echo "Active" || echo "Inactive")$([[ $windows -gt 0 ]] && echo "Occupied" || echo "Unoccupied")\" :width 5 :vexpand false :hexpand false :onclick \"hyprctl dispatch workspace $i\" (box :class \"workspaceButtonBox\" \"$([[ ${workspaceSymbols[i]} ]] && echo "${workspaceSymbols[i]}" || expr $i + 1)\"))"
+		echo -n "(button :class \"WS-$([[ $id -eq $active ]] && echo "Active" || echo "Inactive")$([[ $windows -gt 0 ]] && echo "Occupied" || echo "Unoccupied")\" :width 5 :vexpand false :hexpand false :onclick \"hyprctl dispatch workspace $i\" (box :class \"icon\" \"\"))"
+    done
+}
+generateEwwConf() {
+	echo "(box :class \"workspaces\" $(generateSingleButton))"
+}
+
+generateEwwConf
+socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | while read -r line; do
+	generateEwwConf
+done
+# xprop -spy -root _NET_NUMBER_OF_DESKTOPS _NET_CURRENT_DESKTOP _NET_ACTIVE_WINDOW _NET_CLIENT_LIST_NET_ACTIVE_WINDOW | while read -r _ 
+# do
+# generateEwwConf
+# done

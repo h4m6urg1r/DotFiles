@@ -42,7 +42,7 @@
 		:orientation "${orientation?:"h"}"
 		:class "BarMiddle"
 		:halign "center"
-		;; (windowTitle :class "BarMiddle")
+		;; (windowName :class "BarMiddle")
 		musicVisual
 	)
 )
@@ -80,7 +80,7 @@
 		:halign "start"
 		(applauncher)
 		(workspaces-hyprland)
-		(windowTitle :class "BarMiddle")
+		(windowName :class "BarMiddle")
 	)
 )
 (defwidget barMiddle-hyprland [ ?orientation ]
@@ -99,7 +99,6 @@
 		:space-evenly false
 		:halign "end"
 		(controlPanel)
-		;; (label :justify "left"
-		;;        :text "right side of the bar")
+		(reloadEWW)
 	)
 )

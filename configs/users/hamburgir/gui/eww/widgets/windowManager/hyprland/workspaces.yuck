@@ -1,0 +1,27 @@
+(deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
+(deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
+(defwidget workspaces-hyprland []
+	(eventbox
+		:onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}"
+		(box
+			:space-evenly true
+			:class "workspaces"
+			;; (label :text "${workspaces}${current_workspace}" :visible false)
+			(for workspace in workspaces
+				(eventbox
+					:onclick "hyprctl dispatch workspace ${workspace.id}"
+					(box
+						:class "WS-${workspace.id == current_workspace ? "Active" : "Inactive"}${workspace.windows > 0 ? "Occupied" : "Unoccupied"}"
+						;; (label
+						;; 	:text "${workspace.id}"
+						;; )
+						(circular-progress :class "circle" :thickness 5 :start-at 75 :value 100)
+						;; (progress :class "WS-PB" :value 50)
+						;; ""
+					)
+				)
+			)
+		)
+	)
+)
+

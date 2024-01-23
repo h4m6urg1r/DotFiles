@@ -1,0 +1,17 @@
+(deflisten _windowTitle :initial "" ;;"/bin/sh ~/.config/eww/scripts/get-window-title")
+ `hyprctl activewindow -j | jq --raw-output .title | sed "s/null//" && socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | stdbuf -o0 awk -F '>>|,' '/^activewindow>>/{print $3}'`)
+(deflisten _windowClass :initial "" ;;"/bin/sh ~/.config/eww/scripts/get-window-title")
+ `hyprctl activewindow -j | jq --raw-output .class | sed "s/null//" && socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | stdbuf -o0 awk -F '>>|,' '/^activewindow>>/{print $2}'`)
+
+(defwidget windowName [ ?orientation ]
+    (box 
+        (label :class "WindowTitle"
+               :limit-width 50
+               :wrap false
+               :truncate-left false
+               ;; :hexpand true
+               :text _windowClass
+			   :tooltip _windowTitle
+		)
+	)
+)

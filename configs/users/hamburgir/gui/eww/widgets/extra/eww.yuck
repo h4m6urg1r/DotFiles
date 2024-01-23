@@ -1,6 +1,7 @@
 (include "./widgets/extra/applauncher.yuck")
 (include "./widgets/extra/audio.yuck")
 (include "./widgets/extra/battery.yuck")
+;; (include "./widgets/extra/calendar.yuck")
 (include "./widgets/extra/controlPanel.yuck")
 (include "./widgets/extra/music.yuck")
 (include "./widgets/extra/miscellaneous.yuck")

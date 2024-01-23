@@ -1,0 +1,20 @@
+(defwidget cal []
+	(box :class "cal-box" 
+		:orientation "v"
+		(box :class "cal-inner-box"
+			(calendar :class "cal" 
+					:day calendar_day
+					:month calendar_month
+					:year calendar_year
+			)
+		)
+	)
+)
+
+;; "${formattime(EWW_TIME, "%d")}"
+;; "${formattime(EWW_TIME, "%m")}"
+;; "${formattime(EWW_TIME, "%Y")}"
+
+(deflisten calendar_day "${formattime(EWW_TIME, "%d")}")
+(deflisten calendar_month "${formattime(EWW_TIME, "%m")}")
+(deflisten calendar_year "${formattime(EWW_TIME, "%Y")}")

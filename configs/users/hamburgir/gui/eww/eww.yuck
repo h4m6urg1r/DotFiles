@@ -46,7 +46,14 @@
   :namespace "background"
   :wm-ignore true
   (background)
-  )
+)
+
+(defwindow calendar
+	:monitor 0
+	:geometry (geometry :anchor "top center")
+	:stacking "overlay"
+	(cal)
+)
 ;; (defwindow testing
 ;;   :monitor 0
 ;;   :geometry (geometry :x "0%"
