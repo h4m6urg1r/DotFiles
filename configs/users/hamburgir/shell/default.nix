@@ -10,6 +10,9 @@
 		./vcs.nix
 	];
 	home.packages = with pkgs; [
-		(python3.withPackages (ps: with ps;[ python-pam ]))
+		gobject-introspection
+		gdk-pixbuf
+		gtk3
+		(python3.withPackages (ps: with ps;[ dbus-python pygobject3 python-pam ]))
 	];
 }

@@ -242,7 +242,8 @@
 				{ command = "discord"; }
 				{ command = "pavucontrol"; }
 				{ command = "eww daemon && eww open topbar"; }
-				{ command = "${pkgs.wl-clipboard}/bin/wl-paste -t text --watch ${pkgs.clipman}/bin/clipman store --no-persist"; }
+				{ command = "${pkgs.wl-clipboard}/bin/wl-paste -t text --watch ${pkgs.cliphist}/bin/cliphist store"; }
+				{ command = "${pkgs.wl-clipboard}/bin/wl-paste -t image --watch ${pkgs.cliphist}/bin/cliphist store"; }
 				# { command = ""; }
 				{ command = "$(home-manager generations | head -1 | awk '{print $7 \"/specialisation/wayland\"}')"; }
 			];
