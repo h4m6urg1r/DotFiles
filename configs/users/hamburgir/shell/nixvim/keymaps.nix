@@ -5,6 +5,7 @@
 		ldr = (key: "<Leader>${key}");
 		bgrp = (key: ldr "b${key}");
 		fgrp = (key: ldr "f${key}");
+		ogrp = (key: ldr "o${key}");
 		tgrp = (key: ldr "t${key}");
 	in [
 		{
@@ -61,6 +62,16 @@
 			options = {
 				desc = "Grep string under cursor in pwd";
                 silent = true;
+			};
+		}
+		# Open
+		{
+			action = vimCmd "Oil";
+			key = ogrp "e";
+			mode = [ "n" ];
+			options = {
+				desc = "Open split explorer";
+				silent = true;
 			};
 		}
 		# Toggle

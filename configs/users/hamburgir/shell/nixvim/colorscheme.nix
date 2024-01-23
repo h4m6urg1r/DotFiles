@@ -17,10 +17,10 @@
 				# neotree = true;
 				noice = true;
 				# notifier = true;
-				# notify = true;
+				notify = true;
 				# nvimtree = true;
 				treesitter = true;
-				# treesitter_context = true;
+				treesitter_context = true;
 				ts_rainbow = true;
 				# ts_rainbow2 = true;
 				# ufo = true;
@@ -39,7 +39,7 @@
 
 				native_lsp.enabled = true;
 
-				# navic.enabled = true;
+				navic.enabled = true;
 
 				telescope = {
 					enabled = true;
