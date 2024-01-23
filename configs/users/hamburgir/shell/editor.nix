@@ -5,14 +5,17 @@
 	# programs.nixvim = import ./nixvim { inherit config; };
 	home.sessionVariables = {
 		EDITOR = "nvim";
+		vi = "nvim";
+		vim = "nvim";
+		vimdiff = "nvim";
 	};
 	# home.packages = [ inputs.my-nixvim.packages.x86_64-linux.default ];
 	programs.neovim = {
 		enable = false;
 		defaultEditor = true;
-		viAlias = true;
-		vimAlias = true;
-		vimdiffAlias = true;
+		# viAlias = true;
+		# vimAlias = true;
+		# vimdiffAlias = true;
 		withPython3 = true;
 		# extraPython3Packages = pyPkgs: with pyPkgs; [
 		#     python-lsp-server
