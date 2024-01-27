@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, pkgs, ... }: {
     boot = {
         extraModulePackages = with config.boot.kernelPackages; [ rtl8812au ];
         initrd = {
@@ -12,6 +12,7 @@
             "splash"
             "udev.log_level=3"
         ];
+		kernelPackages = pkgs.linuxPackages_latest;
         consoleLogLevel = 3;
         initrd.verbose = false;
     };
