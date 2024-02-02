@@ -1,6 +1,8 @@
 { config, ... }: {
-    wayland.windowManager.hyprland.extraConfig = ''
-        monitor=,preferred,auto,1
-        monitor=eDP-1,preferred,auto,1
-    '';
+	wayland.windowManager.hyprland.settings = {
+		monitor = [
+			",preferred,auto,1"
+			 "eDP-1,preferred,auto,1"
+		];
+	};
 }
