@@ -26,8 +26,8 @@
 
 		hyprland.url = "github:hyprwm/Hyprland";
 		hy3 = {
-		    url = "github:outfoxxed/hy3";
-		    inputs.hyprland.follows = "hyprland";
+			url = "github:outfoxxed/hy3";
+			inputs.hyprland.follows = "hyprland";
 		};
 
 		nixvim = {
@@ -40,7 +40,7 @@
 
 		webcord.url = "github:fufexan/webcord-flake";
 
-		eww.url = "git+file:///home/hamburgir/repo/eww";
+		eww.url = "github:elkowar/eww";
 		# eww.url = "git+file:///home/hamburgir/repo/eww";
 		rust-overlay.url = "github:oxalica/rust-overlay";
 		ags.url = "github:Aylur/ags";
@@ -51,9 +51,13 @@
 		# everything match nicely? Try nix-colors!
 		# nix-colors.url = "github:misterio77/nix-colors";
 
+		# wallpaper = {
+		# 	url =  "https://raw.githubusercontent.com/uday-sudo/wallpapers/main/1506250.jpg";
+		# 	flake = false;
+		# };
 		wallpaper = {
-			url =  "https://raw.githubusercontent.com/uday-sudo/wallpapers/main/1506250.jpg";
-			flake = false;
+			url = "github:h4m6urg1r/wallpapers";
+			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
 
@@ -95,7 +99,7 @@
 					specialArgs = { inherit inputs outputs; };
 					modules = [
 						inputs.grub2-themes.nixosModules.default
-						./configs/hosts/toaster/configuration.nix
+						./hosts/toaster/configuration.nix
 					];
 				};
 			};
@@ -105,7 +109,7 @@
 					pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
 					extraSpecialArgs = { inherit inputs outputs; };
 					modules = [
-						./configs/users/hamburgir/home.nix
+						./users/hamburgir/home.nix
 					];
 				};
 			};

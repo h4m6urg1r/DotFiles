@@ -1,0 +1,12 @@
+(defwidget reloadEWW [ ?class ]
+	(button
+		:onclick "${EWW_CMD} reload"
+		:tooltip "Reload eww"
+		(box
+			:class "reloadEWW${class}"
+			:space-evenly true
+			;; :timeout launcherTimeout
+			(icon "󰑓")
+		)
+	)
+)

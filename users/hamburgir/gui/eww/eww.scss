@@ -1,0 +1,194 @@
+$rosewater: #f5e0dc;
+$flamingo: #f2cdcd;
+$pink: #f5c2e7;
+$mauve: #cba6f7;
+$red: #f38ba8;
+$maroon: #eba0ac;
+$peach: #fab387;
+$yellow: #f9e2af;
+$green: #a6e3a1;
+$teal: #94e2d5;
+$sky: #89dceb;
+$sapphire: #74c7ec;
+$blue: #89b4fa;
+$lavender: #b4befe;
+$text: #cdd6f4;
+$subtext1: #bac2de;
+$subtext0: #a6adc8;
+$overlay2: #9399b2;
+$overlay1: #7f849c;
+$overlay0: #6c7086;
+$surface2: #585b70;
+$surface1: #45475a;
+$surface0: #313244;
+$base: #1e1e2e;
+$mantle: #181825;
+$crust: #11111b;
+// .top{
+//     &-Bar{
+//         &-BarMiddle {
+//             &-WindowTitle {
+//                 color: $red;
+//             }
+//         }
+//     }
+// }
+* {
+	// opacity: 0;
+	all: unset;
+}
+
+// .LauncherIcon {
+// 	min-height: 27px;
+// 	min-width: 27px;
+// }
+
+.Bar {
+	color: $text;
+	padding-left: 5px;
+	padding-right: 5px;
+	background: $base;
+	font-size: 1.3rem;
+}
+
+.BarFlushed {
+	color: $text;
+	padding-left: 5px;
+	padding-right: 5px;
+	// margin: 5px;
+	// margin-bottom: 0;
+	background: $base;
+	font-size: 1.3rem;
+}
+
+.BarFloating {
+	color: $text;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin: 5px;
+	margin-bottom: 0;
+	background: $base;
+	font-size: 1.3rem;
+	border-radius: .5rem;
+}
+
+.LauncherIcon:hover {
+	// padding: 0rem .3rem;
+	color: $overlay2;
+}
+
+.LauncherIcon {
+	// padding: 0rem .3rem;
+	margin: .1rem;
+	padding-right: .5rem;
+}
+
+// .workspaceWidget {
+// 	color: $blue;
+// }
+//
+// .workspace-entry-current {
+// 	color: $red;
+// }
+
+.workspaces {
+	background: $surface0;
+	padding: 0rem .4rem;
+}
+
+.WS-ActiveOccupied {
+	color: $blue;
+	padding: 0rem .2rem;
+	// margin: .6rem .5rem;
+	// padding: .4rem .4rem;
+	// min-height: 0px;
+	// border-radius: 1rem;
+}
+
+.WS-ActiveUnoccupied {
+	color: $green;
+	padding: 0rem .2rem;
+}
+
+.WS-InactiveOccupied {
+	color: $pink;
+	padding: 0rem .2rem;
+}
+
+.WS-InactiveUnoccupied {
+	color: $overlay0;
+	padding: 0rem .2rem;
+}
+
+.WindowTitle {
+	background-color: $crust;
+	padding: 0rem .5rem;
+	border-radius: .5rem;
+}
+
+.BluetoothButton {
+	min-width: 27px;
+	min-height: 27px;
+}
+
+.TimeWidget {
+    // width: 0;
+	padding-left: .3rem;
+	padding-right: .3rem;
+}
+
+.radialBattery {
+	color: $blue;
+	min-height: 1.3rem;
+	min-width: 1.3rem;
+	font-size: 1rem;
+}
+
+// .radBat {
+// 	color: $green;
+// }
+//
+.iconHorizontal {
+	padding: 0rem .6rem 0rem 0rem;
+	min-width: 1.3rem;
+	min-height: 1.3rem;
+}
+
+.reloadEWW {
+	padding-right: .3rem;
+}
+
+.icon {
+	// aspect-ratio: 1/1;
+	min-width: 1.3rem;
+	min-height: 1.3rem;
+}
+
+tooltip {
+	background: $surface0;
+	border: 2px solid $mantle;
+	border-radius: 8px;
+	color: $subtext1;
+
+	label {
+		font-size: 1.1rem;
+	}
+}
+
+menu {
+	background: $mantle;
+	padding: 10px;
+	font-size: 1.12rem;
+}
+
+menu > menuitem {
+	border-radius: 0px;
+}
+
+menu > menuitem:hover {
+	background: $base;
+}
+
+menu > menuitem:disabled {
+	color: $surface0;
+}

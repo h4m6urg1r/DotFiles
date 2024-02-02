@@ -163,17 +163,17 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1704056882,
-        "narHash": "sha256-tpHpl1y7YdLAg+NYFqMTvuehqjSJjWlIRuE2nQrphGI=",
-        "ref": "refs/heads/systray",
-        "rev": "29d4324f9549e2cccd27c59553a81760dca7ee09",
-        "revCount": 625,
-        "type": "git",
-        "url": "file:///home/hamburgir/repo/eww"
+        "lastModified": 1703102678,
+        "narHash": "sha256-MR91Ytt9Jf63dshn7LX64LWAVygbZgQYkcTIKhfVNXI=",
+        "owner": "elkowar",
+        "repo": "eww",
+        "rev": "65d622c81f2e753f462d23121fa1939b0a84a3e0",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/hamburgir/repo/eww"
+        "owner": "elkowar",
+        "repo": "eww",
+        "type": "github"
       }
     },
     "fenix": {
@@ -1006,15 +1006,23 @@
       }
     },
     "wallpaper": {
-      "flake": false,
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
       "locked": {
-        "narHash": "sha256-ImhzEoqE+wYp3wkULL/fPH5KPAYrPPWmRRh26TwDO/A=",
-        "type": "file",
-        "url": "https://raw.githubusercontent.com/uday-sudo/wallpapers/main/1506250.jpg"
+        "lastModified": 1706825579,
+        "narHash": "sha256-nfLeCBBzBK8SsDYoxf9qs9ZgxNkGYBtvAZB9EP1Wvoc=",
+        "owner": "h4m6urg1r",
+        "repo": "wallpapers",
+        "rev": "61af68c3f7c24e9045ab59863d21fc42c108cd08",
+        "type": "github"
       },
       "original": {
-        "type": "file",
-        "url": "https://raw.githubusercontent.com/uday-sudo/wallpapers/main/1506250.jpg"
+        "owner": "h4m6urg1r",
+        "repo": "wallpapers",
+        "type": "github"
       }
     },
     "webcord": {

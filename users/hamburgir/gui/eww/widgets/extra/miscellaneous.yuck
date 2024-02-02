@@ -1,0 +1,5 @@
+(defwidget icon [ ?class ]
+	(box :class "icon${class}"
+		(children)
+	)
+)

@@ -1,0 +1,23 @@
+{ ... }: {
+	wayland.windowManager.hyprland.settings = {
+		plugin = {
+			hy3 = {
+				no_gaps_when_only = true;
+				node_collapse_policy = 1;
+				tab_first_window = false;
+
+				tabs = {
+					height = 5;
+					padding = 8;
+					render_text = true;
+				};
+
+				# autotile = {
+				# 	enable = true;
+				# 	trigger_width = 800;
+				# 	trigger_height = 500;
+				# };
+			};
+		};
+	};
+}

@@ -1,9 +1,7 @@
 {
-    # flutter = {
-    #     description = ''
-    #         A generic flutter flake
-    #     '';
-    #     path = ./flutter;
-    # };
-    flutter.path = ./flutter;
+	flutter = {
+	    description = ''A generic flutter flake'';
+	    path = ./flutter;
+	};
+	# flutter.path = ./flutter;
 }

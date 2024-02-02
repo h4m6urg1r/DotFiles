@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+command_output=$(eww windows)
+
+lines_with_asterisk=($(echo "$command_output" | grep '^\*'))
+
+pkill eww
+
+for line in "${lines_with_asterisk[@]}"; do
+	echo "Opening $line"
+    eww open "$line"
+done

@@ -1,0 +1,17 @@
+(defwidget radial-battery [ ?icon ?BatteryName ]
+	(box
+		:class "radialBattery"
+		:orientation "h"
+		(circular-progress :thickness 3 :start-at 75 :value {EWW_BATTERY[BatteryName?:'BAT0']?.['capacity']/60 * 100} (label :class "radBat" :text "󰁹") )
+	)
+)
+
+(defwidget textBattery [ ?orientation ?BatteryName ]
+	(box
+		:class "textBattery"
+		:orientation orientation
+		:space-evenly false
+		(icon :class "Horizontal" "")
+		"${EWW_BATTERY[BatteryName?:'BAT0']?.['capacity']}%"
+	)
+)
