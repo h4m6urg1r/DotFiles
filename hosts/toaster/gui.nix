@@ -1,4 +1,4 @@
-{ inputs, outputs, pkgs, lib, ... }:let
+{ inputs, outputs, pkgs, lib, config, ... }:let
 	package = {
 		cfg,
 		flavour,
@@ -55,13 +55,18 @@
 			clockEnabled = "true";
 			customBackground = "true";
 			loginBackground = "true";
-			background = inputs.wallpaper;
+			background = config.wallpaper.sddm.output;
 		};
 		flavour = "Mocha";
 		srcPath = "catppuccin-mocha";
 	};
 in {
 	# Enable the X11 windowing system.
+
+	wallpaper.sddm = {
+		dir = "your_name";
+		file = "VillageComet.jpg";
+	};
 
 	services.xserver.desktopManager = {
 		xfce.enable = false;
@@ -100,8 +105,10 @@ in {
 	# Configure keymap in X11
 	services.xserver = {
 		enable = true;
-		layout = "us";
-		xkbVariant = "";
+		xkb = {
+			layout = "us";
+			variant = "";
+		};
 	};
 	services.gnome.gnome-keyring.enable = true;
 	programs.hyprland = {
