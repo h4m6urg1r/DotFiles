@@ -9,7 +9,7 @@
 				tabs = {
 					height = 5;
 					padding = 8;
-					render_text = true;
+					render_text = false;
 				};
 
 				# autotile = {
