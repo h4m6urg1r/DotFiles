@@ -99,6 +99,7 @@
 					specialArgs = { inherit inputs outputs; };
 					modules = [
 						inputs.grub2-themes.nixosModules.default
+						inputs.wallpaper.nixosModules.default
 						./hosts/toaster/configuration.nix
 					];
 				};
@@ -109,6 +110,11 @@
 					pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
 					extraSpecialArgs = { inherit inputs outputs; };
 					modules = [
+						inputs.ags.homeManagerModules.default
+						inputs.hyprland.homeManagerModules.default
+						inputs.nixvim.homeManagerModules.nixvim
+						inputs.wallpaper.homeManagerModules.default
+						inputs.webcord.homeManagerModules.default
 						./users/hamburgir/home.nix
 					];
 				};

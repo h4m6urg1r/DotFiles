@@ -1,7 +1,4 @@
 { inputs, pkgs, ... }: {
-	imports = [
-		inputs.ags.homeManagerModules.default
-	];
 	nixpkgs.overlays = [
 		inputs.eww.overlays.default
 		inputs.rust-overlay.overlays.default

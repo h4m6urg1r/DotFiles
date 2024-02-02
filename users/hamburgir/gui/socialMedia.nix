@@ -1,8 +1,4 @@
 { inputs, pkgs, ... }: {
-    imports = [
-        inputs.webcord.homeManagerModules.default
-    ];
-
 	home.packages = with pkgs; [
 		discord
 	];

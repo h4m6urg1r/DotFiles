@@ -1,6 +1,5 @@
 { inputs, config, pkgs, ... }: {
 	imports = [
-		inputs.nixvim.homeManagerModules.nixvim
 		./cmp.nix
 		./colorscheme.nix
 		./filemanager.nix

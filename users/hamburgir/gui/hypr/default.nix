@@ -1,6 +1,5 @@
 { inputs, ... }: {
 	imports = [
-		inputs.wallpaper.homeManagerModules.default
 		./hy3.nix
 		./input.nix
 		./keybinds.nix
