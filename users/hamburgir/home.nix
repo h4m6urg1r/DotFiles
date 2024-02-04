@@ -101,6 +101,11 @@
 					type = lib.types.bool;
 					description = "Anime character rendering UwU";
 				};
+				wallpaper = lib.mkOption {
+					default = true;
+					type = lib.types.bool;
+					description = "Hyprland wallpaper";
+				};
 				layout = lib.mkOption {
 					default = "hy3";
 					type = lib.types.str;
