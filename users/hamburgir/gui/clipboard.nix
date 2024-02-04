@@ -1,8 +1,8 @@
 { pkgs, ... }: {
-    home.packages = with pkgs; [
+	home.packages = with pkgs; [
 		cliphist
-        wl-clipboard
-        grim
-        slurp
-    ];
+		wl-clipboard
+		grim
+		slurp
+	];
 }
