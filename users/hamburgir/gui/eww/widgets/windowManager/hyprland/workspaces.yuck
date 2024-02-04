@@ -25,3 +25,29 @@
 	)
 )
 
+(defwidget workspaceStrip-hyprland []
+	(eventbox
+		:onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}"
+		(box
+			:class "workspaceStrip"
+			;; :visible true
+			;; (label :class "WS-ActiveOccupied" :text "${workspaces}${current_workspace}" :visible true)
+			
+			(for workspace in workspaces
+				;; (label :text "hello")
+				(box
+					;; :onclick "hyprctl dispatch workspace ${workspace.id}"
+					:class "WS-strip-${workspace.id == current_workspace ? "Active" : "Inactive"}${workspace.windows > 0 ? "Occupied" : "Unoccupied"}"
+					:space-evenly true
+					;; (label
+					;; 	:text "${workspace.id}"
+					;; )
+					;; (circular-progress :class "circle" :thickness 5 :start-at 75 :value 100)
+					;; (progress :class "WS-PB" :value 50)
+					"a"
+				)
+			)
+		)
+	)
+)
+
