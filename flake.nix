@@ -59,6 +59,11 @@
 			url = "github:h4m6urg1r/wallpapers";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		zsh-f-sy-h ={
+			url = "github:zdharma-continuum/fast-syntax-highlighting";
+			flake = false;
+		};
 	};
 
 	outputs = { self, nixpkgs, home-manager, ... }@inputs:
