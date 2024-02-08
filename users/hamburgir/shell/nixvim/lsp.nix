@@ -20,6 +20,7 @@
 			nixd.enable = true;
 			# pylsp.enable = true;
 			ruff-lsp.enable = true;
+			tsserver.enable = true;
 		};
 	};
 }
