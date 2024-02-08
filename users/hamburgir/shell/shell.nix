@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ inputs, config, pkgs, ... }: {
 	programs.starship = {
 		enable = true;
 		enableBashIntegration = true;
@@ -10,12 +10,17 @@
 				# "│" "─"
 				# "│" "─"
 				# "[╰](black)" "$os" "[\\[ $directory \\]](blue)" "[─](black)" "$character" # "╯"
+
 				"$os" "$directory" "$c" "\n"
 				"$username" "$character"
+
+				# "$username" "$directory" "$character"
 			];
 			right_format = pkgs.lib.concatStrings [
 				# "$time" "$cmd_duration" "[╯](black)"
 				"$time" "$cmd_duration" "$nix_shell"
+
+				# "$time" "$cmd_duration"
 			];
 			c = {
 				# format = "";
@@ -43,6 +48,7 @@
 			};
 			nix_shell = {
 				format = "[$symbol$state( \\($name\\))]($style)";
+				symbol = "󱄅 ";
 				heuristic = true;
 			};
 			os = {
@@ -50,7 +56,7 @@
 				disabled = false;
 				style = "blue dimmed";
 				symbols = {
-					NixOS = " ";
+					NixOS = "󱄅 ";
 				};
 			};
 			time = {
@@ -119,15 +125,11 @@
 			];
 		};
 		plugins = [
-			# {
-			# 	name = "fast-syntax-highlighting";
-			# 	src = pkgs.fetchFromGitHub {
-			# 	owner = "zdharma-continuum";
-			# 	repo = "fast-syntax-highlighting";
-			# 	rev = "v1.55";
-			# 	hash = "sha256-DWVFBoICroKaKgByLmDEo4O+xo6eA8YO792g8t8R7kA=";
-			# 	};
-			# }
+			{
+				name = "fast-syntax-highlighting";
+				src = inputs.zsh-f-sy-h;
+				# file = "fast-syntax-highlighting";
+			}
 			# {
 			# 	name = "zsh-completions";
 			# 	src = pkgs.fetchFromGitHub {
