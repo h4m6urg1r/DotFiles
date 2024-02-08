@@ -5,7 +5,7 @@
 			size = 12.5;
 		};
 		shellIntegration = {
-			mode = "no-rc";
+			mode = "no-rc no-cursor";
 
 			enableBashIntegration = true;
 			enableFishIntegration = true;
@@ -110,6 +110,9 @@
 				color15;
 			background_opacity = "0.8";
 			background_image = "null";
+			enable_audio_bell = false;
+			cursor_shape = "block";
+			cursor_blink_interval = 0;
 		};
 	};
 }
