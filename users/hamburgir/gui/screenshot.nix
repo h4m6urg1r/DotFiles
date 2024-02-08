@@ -1,7 +1,9 @@
 { pkgs, ... }: {
 	home.packages = with pkgs; [
-		grim
+		# grim
+		wayshot
 		slurp
 		swappy
+		satty
 	];
 }

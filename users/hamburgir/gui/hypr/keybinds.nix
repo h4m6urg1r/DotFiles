@@ -35,8 +35,8 @@
 			", XF86AudioPrev, exec, playerctl previous"
 
 			# Screenshot utilities
-			", Print, exec, grim - | swappy -f -"
-			"SHIFT, Print, exec, grim -g \"$(slurp)\" - | swappy -f -"
+			", Print, exec, wayshot --stdout | swappy -f -"
+			"SHIFT, Print, exec, wayshot -s \"$(slurp)\" --stdout | swappy -f -"
 
 			", XF86MonBrightnessUp, exec, brightnessctl set 1%+"
 			", XF86MonBrightnessDown, exec, brightnessctl set 1%-"
