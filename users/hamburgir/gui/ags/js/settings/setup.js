@@ -1,14 +1,14 @@
-import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 import Battery from 'resource:///com/github/Aylur/ags/service/battery.js';
 import Notifications from 'resource:///com/github/Aylur/ags/service/notifications.js';
+import Audio from 'resource:///com/github/Aylur/ags/service/audio.js';
 import options from '../options.js';
 import icons from '../icons.js';
-import { reloadScss, scssWatcher } from './scss.js';
-import { wallpaper } from './wallpaper.js';
-import { hyprlandInit, setupHyprland } from './hyprland.js';
+// import { reloadScss, scssWatcher } from './scss.js';
+// import { wallpaper } from './wallpaper.js';
+// import { hyprlandInit, setupHyprland } from './hyprland.js';
 import { globals } from './globals.js';
-import { showAbout } from '../about/about.js';
-import Gtk from 'gi://Gtk';
+// import { showAbout } from '../about/about.js';
+import Gtk from 'gi://Gtk?version=3.0';
 
 export function init() {
     notificationBlacklist();
@@ -17,23 +17,25 @@ export function init() {
     tmux();
     gsettigsColorScheme();
     gtkFontSettings();
-    scssWatcher();
-    dependandOptions();
+    // scssWatcher();
+    // dependandOptions();
 
-    reloadScss();
-    hyprlandInit();
-    setupHyprland();
-    wallpaper();
-    showAbout();
+    // reloadScss();
+    // hyprlandInit();
+    // setupHyprland();
+    // wallpaper();
+    // showAbout();
+
+    Audio.maxStreamVolume = 1.05;
 }
 
-function dependandOptions() {
-    options.bar.style.connect('changed', ({ value }) => {
-        if (value !== 'normal')
-            options.desktop.screen_corners.setValue(false, true);
-    });
-}
-
+// function dependandOptions() {
+//     options.bar.style.connect('changed', ({ value }) => {
+//         if (value !== 'normal')
+//             options.desktop.screen_corners.setValue(false, true);
+//     });
+// }
+//
 function tmux() {
     if (!Utils.exec('which tmux'))
         return;
@@ -49,9 +51,9 @@ function tmux() {
         }
     }
 
-    options.theme.accent.accent.connect('changed', ({ value }) => Utils
-        .execAsync(`tmux set @main_accent ${getColor(value)}`)
-        .catch(err => console.error(err.message)));
+    // options.theme.accent.accent.connect('changed', ({ value }) => Utils
+    //     .execAsync(`tmux set @main_accent ${getColor(value)}`)
+    //     .catch(err => console.error(err.message)));
 }
 
 function gsettigsColorScheme() {
@@ -77,8 +79,8 @@ function gtkFontSettings() {
         settings.gtk_font_name = `${font.value} ${size.value}`;
     };
 
-    options.font.font.connect('notify::value', callback);
-    options.font.size.connect('notify::value', callback);
+    // options.font.font.connect('notify::value', callback);
+    // options.font.size.connect('notify::value', callback);
 }
 
 function notificationBlacklist() {
@@ -93,7 +95,8 @@ function notificationBlacklist() {
 
 function warnOnLowBattery() {
     Battery.connect('notify::percent', () => {
-        const low = options.battery.low.value;
+        // const low = options.battery.low.value;
+        const low = 50;
         if (Battery.percent !== low ||
             Battery.percent !== low / 2 ||
             !Battery.charging)

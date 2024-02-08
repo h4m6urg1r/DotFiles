@@ -1,3 +1,4 @@
+/* Shamelessly stolen from https://github.com/Aylur/dotfiles/blob/main/ags/js/services/screenrecord.js */
 import Service from 'resource:///com/github/Aylur/ags/service.js';
 import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 import App from 'resource:///com/github/Aylur/ags/app.js';

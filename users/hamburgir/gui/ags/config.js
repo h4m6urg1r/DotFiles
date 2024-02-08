@@ -1,23 +1,47 @@
-import { readFile } from 'resource:///com/github/Aylur/ags/utils.js';
-import App from 'resource:///com/github/Aylur/ags/app.js';
-import GLib from 'gi://GLib';
-const pkgjson = JSON.parse(readFile(App.configDir + '/package.json'));
+import ControlCenter from './js/controlCenter/ControlCenter.js'
+import Notifications from './js/notifications/Notifications.js';
+import App from "resource:///com/github/Aylur/ags/app.js"
+import { monitorFile } from "resource:///com/github/Aylur/ags/utils/file.js"
+import Bar from "./js/bar/TopBar.js"
+import WorkspaceStrip from "./js/workspaceStrip/Workspaces.js"
+import { init } from './js/settings/setup.js';
 
-const SKIP_CHECK = 'AGS_SKIP_V_CHECK';
+// main scss file
+const scss = `${App.configDir}/scss/main.scss`
 
-const v = {
-    ags: `v${pkg.version}`,
-    expected: `v${pkgjson.version}`,
-    check: !GLib.getenv(SKIP_CHECK),
-};
+// target css file
+const css = `/tmp/ags/style.css`
 
-function mismatch() {
-    print(`my config expects ${v.expected}, but your ags is ${v.ags}`);
-    print(`to skip the check run "${SKIP_CHECK}=true ags"`);
-    App.connect('config-parsed', app => app.Quit());
-    return {};
+// make sure sassc is installed on your system
+Utils.exec(`mkdir -p /tmp/ags`)
+Utils.execAsync(['sassc', scss, css ])
+	.then(out => print(out))
+	.catch(err => print(err));
+
+monitorFile (
+	`${App.configDir}/scss`,
+	function() {
+		// main scss file
+		const scss = `${App.configDir}/scss/main.scss`
+
+		// target css file
+		const css = `/tmp/ags/style.css`
+
+		// make sure sassc is installed on your system
+		Utils.exec(`sassc ${scss} ${css}`)
+		App.resetCss()
+		App.applyCss(css)
+	},
+	"directory",
+)
+
+export default {
+	style: css,
+	onConfigParsed: init,
+	windows: [
+		Bar(),
+		WorkspaceStrip(),
+		ControlCenter(),
+		Notifications(),
+	],
 }
-
-export default v.ags === v.expected || !v.check
-    ? (await import('./js/main.js')).default
-    : mismatch();

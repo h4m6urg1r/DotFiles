@@ -1,0 +1,20 @@
+window#bar1 {
+	all: unset;
+	background-color: #ffffff;
+}
+.bar1 {
+	& .panel-button {
+		&.focused-client{
+			& {
+				.clientIcon {
+					// margin: 3px;
+					padding: 3px;
+				}
+
+				.clientLabel {
+					// color: $red;
+				}
+			}
+		}
+	}
+}

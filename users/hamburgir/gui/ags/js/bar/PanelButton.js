@@ -1,6 +1,4 @@
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
-import App from 'resource:///com/github/Aylur/ags/app.js';
-
+/* Stolen from https://github.com/Aylur/dotfiles/blob/main/ags/js/bar/PanelButton.js */
 /**
  * @typedef {Object} PanelButtonProps
  * @property {import('types/widgets/button').ButtonProps['child']} content

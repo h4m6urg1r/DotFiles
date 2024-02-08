@@ -1,3 +1,4 @@
+/* Shamelessly stolen from https://github.com/Aylur/dotfiles/blob/main/ags/js/icons.js */
 export default {
     lock: 'system-lock-screen-symbolic',
     fallback: {

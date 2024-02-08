@@ -62,10 +62,11 @@ const PopupList = (transition = 'slide_down') => Widget.Box({
 });
 
 /** @param {number} monitor */
-export default monitor => Widget.Window({
+export default ( monitor = 0 ) => Widget.Window({
     monitor,
     name: `notifications${monitor}`,
     class_name: 'notifications',
-    anchor: options.notifications.position.bind('value'),
+    // anchor: options.notifications.position.bind('value'),
+	anchor: [ "top", "left" ],
     child: PopupList(),
 });
