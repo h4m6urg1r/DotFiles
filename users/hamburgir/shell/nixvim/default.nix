@@ -4,6 +4,7 @@
 		./colorscheme.nix
 		./filemanager.nix
 		./keymaps.nix
+		./live-server.nix
 		./lsp.nix
 		./options.nix
 		./snippets.nix
