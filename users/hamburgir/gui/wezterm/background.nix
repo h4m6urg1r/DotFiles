@@ -13,4 +13,5 @@ config.window_background_gradient = {
 	},
 }
 --]]
+config.window_background_opacity = 0.8
 ''

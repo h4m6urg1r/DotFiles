@@ -4,10 +4,12 @@
 	in {
 		# Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 		bind = [
-			"${cfg.mod}, Return, exec, kitty"
+			# "${cfg.mod}, Return, exec, kitty"
+			"${cfg.mod}, Return, exec, wezterm start"
 			"${cfg.mod} SHIFT, c, killactive, "
 			"${cfg.mod} SHIFT, q, exit, "
-			"${cfg.mod}, e, exec, kitty lf"
+			# "${cfg.mod}, e, exec, kitty lf"
+			"${cfg.mod}, e, exec, wezterm start lf"
 			"${cfg.mod}, r, exec, rofi -show drun"
 			# "${cfg.mod}, p, pseudo, " # dwindle"
 			# "${cfg.mod}, t, togglesplit, " # dwindle"
