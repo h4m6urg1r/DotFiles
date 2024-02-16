@@ -64,7 +64,7 @@
 			};
 			theme = {
 				windowGaps = lib.mkOption {
-					default = 4;
+					default = 2;
 					type = lib.types.number;
 					description = "Gaps between windows";
 				};
