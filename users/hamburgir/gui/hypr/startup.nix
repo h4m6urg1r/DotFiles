@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
 	wallpaper.desktop = {
 		dir = "your_name";
-		file = "MitsuhaComet.jpg";
+		file = "MitsuhaTakiFirstMeet.jpg";
 	};
 	wayland.windowManager.hyprland.settings = {
 		exec-once = [

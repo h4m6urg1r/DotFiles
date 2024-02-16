@@ -37,15 +37,28 @@
 
 			# Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
 
-			bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+			bezier = [
+				"myBezier, 0.05, 0.9, 0.1, 1.05"
+				"easeInOutBack, 0.68, -0.55, 0.265, 1.55"
+				"easeInBack, 0.36, 0, 0.66, -0.56"
+				"easeOutBack, 0.34, 1.56, 0.64, 1"
+				"easeOutCircle, 0, 0.55, 0.45, 1"
+			];
 
 			animation = [
-				"windows, 1, 7, myBezier"
-				"windowsOut, 1, 7, default, popin 80%"
+				# "windows, 1, 7, myBezier"
+				# "windowsOut, 1, 7, default, popin 80%"
+
+				"windows, 1, 8, easeInOutBack"
+				"windowsOut, 1, 8, easeInOutBack"
+
 				"border, 1, 10, default"
 				"borderangle, 1, 8, default"
-				"fade, 1, 7, default"
-				"workspaces, 1, 6, default"
+
+				# "fade, 1, 7, default"
+				"fade, 1, 7, easeInOutBack"
+
+				"workspaces, 1, 5, easeOutBack"
 			];
 		};
 
