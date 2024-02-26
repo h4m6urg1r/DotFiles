@@ -63,13 +63,13 @@
     #        hidpi = true;
     #    };
     #};
-    specialisation = {
-        wayland.configuration = {
-            programs.rofi.package = pkgs.rofi-wayland;
-        # (pkgs.writeShellScriptBin "rofi-wayland" "exec -a $0 ${pkgs.rofi-wayland.override { plugins = [ rofi-calc rofi-emoji rofi-file-browser rofi-pass rofi-power-menu ]; } }/bin/rofi $@")
-        };
-        x11.configuration = {
-            programs.rofi.package = pkgs.rofi;
-        };
-    };
+    # specialisation = {
+    #     wayland.configuration = {
+    #         programs.rofi.package = pkgs.rofi-wayland;
+    #     # (pkgs.writeShellScriptBin "rofi-wayland" "exec -a $0 ${pkgs.rofi-wayland.override { plugins = [ rofi-calc rofi-emoji rofi-file-browser rofi-pass rofi-power-menu ]; } }/bin/rofi $@")
+    #     };
+    #     x11.configuration = {
+    #         programs.rofi.package = pkgs.rofi;
+    #     };
+    # };
 }

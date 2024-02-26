@@ -10,7 +10,7 @@
 		./shell
 		./theme.nix
 		./xdg.nix
-	];
+	] ++ (builtins.attrValues outputs.homeManagerModules);
 
 	options = {
 		wm = {
@@ -60,18 +60,6 @@
 							description = "Keybind used for moving focus/windows to down";
 						};
 					};
-				};
-			};
-			theme = {
-				windowGaps = lib.mkOption {
-					default = 2;
-					type = lib.types.number;
-					description = "Gaps between windows";
-				};
-				outerGaps = lib.mkOption {
-					default = config.wm.theme.windowGaps * 2;
-					type = lib.types.number;
-					description = "Gaps outside window area";
 				};
 			};
 			gesture = {
@@ -190,5 +178,9 @@
 		manual.html.enable = true;
 		manual.json.enable = true;
 		services.network-manager-applet.enable = true;
+
+##### Hyprland
+		wm.blur.enable = true;
+		wm.gaps.singleWindow = false;
 	};
 }

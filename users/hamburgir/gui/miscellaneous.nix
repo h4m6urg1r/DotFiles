@@ -17,10 +17,11 @@
 			extraPackages = with pkgs; [
 				libsoup_3
 				libgtop
+				inotify-tools
 			];
 		};
 		eww = {
-			enable = true;
+			enable = false;
 			configDir = ./eww;
 			# package = pkgs.eww-wayland;
 			package = (pkgs.writeShellScriptBin "eww" ''

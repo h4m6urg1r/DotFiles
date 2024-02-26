@@ -22,7 +22,7 @@
 			url = "github:catppuccin/bat";
 			flake = false;
 		};
-		grub2-themes.url = "github:h4m6urg1r/grub2-themes";
+		grub2-themes.url = "github:vinceliuice/grub2-themes";
 
 		hyprland.url = "github:hyprwm/Hyprland";
 		hy3 = {

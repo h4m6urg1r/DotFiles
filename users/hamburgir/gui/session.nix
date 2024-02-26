@@ -260,7 +260,7 @@
 		'';
 	};
     imports = [
-		./hypr
+		# ./hypr
 	];
 	wayland.windowManager.hyprland = {
 		enable = true;

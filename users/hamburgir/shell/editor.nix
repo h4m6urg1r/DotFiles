@@ -1,6 +1,6 @@
 { inputs, config, pkgs, ... }: {
 	imports = [
-		./nixvim
+		# ./nixvim
 	];
 	# programs.nixvim = import ./nixvim { inherit config; };
 	home.sessionVariables = {
@@ -9,6 +9,7 @@
 		vim = "nvim";
 		vimdiff = "nvim";
 	};
+	home.packages = [pkgs.lunarvim];
 	# home.packages = [ inputs.my-nixvim.packages.x86_64-linux.default ];
 	programs.neovim = {
 		enable = false;

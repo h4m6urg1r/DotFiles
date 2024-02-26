@@ -75,6 +75,7 @@
 		# initExtraFirst = "zmodload zsh/zprof";
 		initExtra = ''
 			ZLE_RPROMPT_INDENT=0
+			alias ls="eza --icons=auto"
 			'';
 		# initExtra = ''
 		#     any-nix-shell zsh --info-right | source /dev/stdin
